@@ -1,9 +1,10 @@
 from django.contrib import admin
 
-from .models import Company, User, Comment
+from .models import Company, Image, User, Comment
 
 # Register your models here.
 
 admin.site.register(Company)
+admin.site.register(Image)
 admin.site.register(User)
 admin.site.register(Comment)
