@@ -1,0 +1,7 @@
+* Description
+
+* How to install
+- Clone the repository
+- Install django and django-cleanup using pip
+- Run './manage.py runserver'
+- Enjoy !
