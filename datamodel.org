@@ -1,0 +1,16 @@
+This file will describe the data model to help as much as possible the
+work of our fellow frontend devs (Lolo and Jonas). 
+
+If it is not up to date, please refer to the file vici/viciapp/models.py. 
+
+* Company
+- name : CharField
+- description : TextField
+
+* User
+
+* Comment
+- company : ForeignKey to company
+- user : ForeignKey to company
+- stars : IntegerField
+- message : TextField

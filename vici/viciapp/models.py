@@ -6,6 +6,9 @@ class Company(models.Model):
     # TODO add category
     # TODO add images and the rest
     # TODO add position
+
+    def __str__(self):
+        return self.name
     
 class User(models.Model):
     pass # TODO see what we put here
