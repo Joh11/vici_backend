@@ -10,13 +10,19 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
+# Image handling
+# Images will be saved in media/<company_id>/
+
+def upload_image_dir_path(instance, filename):
+    return 'company_{}/{}'.format(instance.company_id, filename)
+
 class Image(models.Model):
     # Relations
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     
     # Fields
     legend = models.CharField(max_length=200)
-    image = models.ImageField()
+    image = models.ImageField(upload_to=upload_image_dir_path)
 
     def __str__(self):
         return "Image : " + self.legend

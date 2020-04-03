@@ -122,3 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Stuff not added by Django
+
+# Path to storage of user-uploaded images
+# TODO see security checks on django website !
+MEDIA_ROOT = 'media/'
