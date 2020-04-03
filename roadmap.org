@@ -1,7 +1,9 @@
-* TODO Debug display of all companies
+** DONE Debug display of all companies
 * TODO Tell more in details Lolo and Jonas how they're supposed to write their html and css stuff
 * TODO Map and GPS coordinate stuff
 * TODO Authentification system
 * TODO How to add the rest of the fields for company and user
 ** Which fields for user ?
+** store GPS coordinates ? 
 * TODO API and iOS communication
+** See more doc to make REST and CRUD model of API
