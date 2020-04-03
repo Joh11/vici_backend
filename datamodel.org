@@ -10,7 +10,7 @@ If it is not up to date, please refer to the file vici/viciapp/models.py.
 * Image
 - company :: ForeignKey to company
 - legend :: CharField
-- image :: ImageField (stored im /media/company_<company_id>/)
+- image :: ImageField (stored im media/company_<company_id>/)
 
 * User
 
