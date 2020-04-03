@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'viciapp.apps.ViciappConfig',
+
+    'django_cleanup',
     
     'django.contrib.admin',
     'django.contrib.auth',
