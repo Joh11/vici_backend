@@ -4,13 +4,18 @@ work of our fellow frontend devs (Lolo and Jonas).
 If it is not up to date, please refer to the file vici/viciapp/models.py. 
 
 * Company
-- name : CharField
-- description : TextField
+- name :: CharField
+- description :: TextField
+
+* Image
+- company :: ForeignKey to company
+- legend :: CharField
+- image :: ImageField (stored im /media/company_<company_id>/)
 
 * User
 
 * Comment
-- company : ForeignKey to company
-- user : ForeignKey to company
-- stars : IntegerField
-- message : TextField
+- company :: ForeignKey to company
+- user :: ForeignKey to user
+- stars :: IntegerField
+- message :: TextField
