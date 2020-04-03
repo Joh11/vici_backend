@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404, render
 from .models import Company
 
 def index(request):
-    return HttpResponse("This is the index. Welcome")
+    return HttpResponse("This is the index. Welcome les garcons")
 
 def create_company(request):
     return HttpResponse("Here you create your own page")

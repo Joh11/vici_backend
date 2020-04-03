@@ -1,4 +1,5 @@
-** DONE Debug display of all companies
+* DONE Debug display of all companies
+* TODO Find out how to handle images in db (and data url and such like said Jonas)
 * TODO Tell more in details Lolo and Jonas how they're supposed to write their html and css stuff
 * TODO Map and GPS coordinate stuff
 * TODO Authentification system
