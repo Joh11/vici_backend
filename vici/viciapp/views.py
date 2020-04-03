@@ -17,3 +17,8 @@ def register_company(request):
 def details(request, company_id):
     company = get_object_or_404(Company, pk=company_id)
     return render(request, 'viciapp/details.html', {'company': company})
+
+def all_companies(request):
+    companies = Company.objects.all()
+    output = ', '.join([c.name for c in companies])
+    return HttpResponse(output)
