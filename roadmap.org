@@ -1,14 +1,23 @@
 * DONE Debug display of all companies
 * DONE Tell more in details Lolo and Jonas how they're supposed to write their html and css stuff
+* TODO API and iOS communication
+** See more doc to make REST and CRUD model of API
+** DONE Use tastypie
+** DONE Say to Bricq that the response can be paginated (20 by default) so useful to make asynchronous retrieval of data
+** Add custom filter for Geodata
 * TODO Find out how to handle images in db (and data url and such like said Jonas)
 ** DONE Image in db
 ** DONE Modify location (MEDIA_ROOT)
 ** TODO Image upload from html ?
 * TODO Map and GPS coordinate stuff
 ** See how it is done in the frontend / app
+** Intregrate GeoDjango / GIS system
 * TODO Authentification system
 * TODO How to add the rest of the fields for company and user
 ** Which fields for user ?
 ** store GPS coordinates ? 
-* TODO API and iOS communication
-** See more doc to make REST and CRUD model of API
+* TODO Deploy server
+** TODO Rpi for Bricq bros
+*** With open ports for Marin
+** Choose to deploy on VPS if enough time ? 
+*** See deployment documentation on Django
