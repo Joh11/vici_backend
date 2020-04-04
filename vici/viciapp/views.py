@@ -22,3 +22,9 @@ def all_companies(request):
     companies = Company.objects.all()
     output = ', '.join([c.name for c in companies])
     return HttpResponse(output)
+
+def create_account(request):
+    return render(request, 'viciapp/create_account.html')
+
+def register_account(request):
+    return HttpResponse('This is a response {}'.format(len(request.POST)))
