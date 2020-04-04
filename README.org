@@ -3,5 +3,7 @@
 * How to install
 - Clone the repository
 - Install django and django-cleanup using pip
+- apt install libsqlite3-mod-spatialite
+- apt install binutils libproj-dev gdal-bin
 - Run './manage.py runserver'
 - Enjoy !

@@ -19,4 +19,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('login/', views.login_view, name='login'),
     path('login_process/', views.login_process, name='login_process'),
+    path('file_upload/', views.file_upload, name='file_upload'),
+    path('file_upload_process/', views.file_upload_process, name='file_upload_process'),
     path('api/', include(v1_api.urls))] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

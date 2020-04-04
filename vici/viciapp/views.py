@@ -39,3 +39,18 @@ def login_process(request):
     
     print(request.POST['submit'])
     return HttpResponse("POST : {}".format(dict(request.POST)))
+
+
+def file_upload(request):
+    return render(request, 'viciapp/file_upload.html')
+
+def file_upload_process(request):
+    for x in request.FILES:
+        print(type(x))
+        print(x)
+        f = request.FILES[x]
+        print(type(f))
+        with open(x, 'wb+') as dest:
+            for chunk in f.chunks():
+                dest.write(chunk)
+    return HttpResponse("request.FILES = {}".format(dict(request.FILES)))
