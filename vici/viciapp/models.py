@@ -1,11 +1,20 @@
-from django.db import models
+from django.contrib.gis.db import models
 from django.contrib.auth.models import User
 
 class Company(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='company')
+    
     name = models.CharField(max_length=200)
     description = models.TextField()
+    location = models.PointField(null=True)
+    category = models.IntegerField()
+    help_message = models.TextField()
+
+    opening_hours = models.CharField(max_length=400)
+    adress = models.CharField(max_length=400)
+
     # TODO add category
-    # TODO add images and the rest
+    # TODO add the rest
     # TODO add position
 
     def __str__(self):
@@ -28,13 +37,15 @@ class Image(models.Model):
     def __str__(self):
         return "Image : " + self.legend
 
+class Contact(models.Model):
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='contacts')
+    data = models.CharField(max_length=200)
+    
 class Service(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='services')
     
-    name = models.CharField(max_length=200)
     logo = models.CharField(max_length=50) # TODO régler ça
     description = models.TextField()
-    price = models.DecimalField(max_digits=5, decimal_places=2)
     
 class Comment(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='comments')

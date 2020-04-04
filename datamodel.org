@@ -4,19 +4,24 @@ work of our fellow frontend devs (Lolo and Jonas).
 If it is not up to date, please refer to the file vici/viciapp/models.py. 
 
 * Company
-- id :: Int
 - name :: CharField
 - description :: TextField
-- category :: Optional Int (Enum)
-- contacts :: [CharField]
+- location :: 
+- category :: Int (Enum)
 
 - services :: (Relation to Service) (implicit)
 - images :: (Relation)
 
+- opening_hours :: String
+- adress ::
+- contacts :: [CharField]
+
+- help_message :: TextField
+
+** About images : logo and cover are special
+
 * Service
-- name :: String
 - description :: TextField
-- price :: Int (nullable)
 - logo :: CharField
 
 * Image
@@ -31,3 +36,24 @@ If it is not up to date, please refer to the file vici/viciapp/models.py.
 - user :: ForeignKey to user
 - stars :: IntegerField
 - message :: TextField
+
+
+
+* Data obtained from website
+** Sign Up
+- company name
+- private email
+- password
+
+** Page details
+- company name (same as sign up)
+- logo image
+- cover image
+- category
+- services
+- opening hours
+- adress (street + city)
+- contacts (email + phone)
+- description
+- other images
+- how can people help

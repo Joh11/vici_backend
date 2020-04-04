@@ -1,10 +1,12 @@
-from django.contrib import admin
+from django.contrib.gis import admin
 
 from .models import Company, Image, Service, User, Comment
 
 # Register your models here.
 
-admin.site.register(Company)
-admin.site.register(Image)
-admin.site.register(Service)
-admin.site.register(Comment)
+current_admin = admin.OSMGeoAdmin
+
+admin.site.register(Company, current_admin)
+admin.site.register(Image, current_admin)
+admin.site.register(Service, current_admin)
+admin.site.register(Comment, current_admin)
