@@ -19,7 +19,7 @@ def upload_image_dir_path(instance, filename):
 
 class Image(models.Model):
     # Relations
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='images')
     
     # Fields
     legend = models.CharField(max_length=200)
