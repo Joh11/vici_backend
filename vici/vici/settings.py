@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'viciapp.apps.ViciappConfig',
 
     'django_cleanup',
+    'tastypie',
     
     'django.contrib.admin',
     'django.contrib.auth',
