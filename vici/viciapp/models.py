@@ -27,6 +27,14 @@ class Image(models.Model):
     def __str__(self):
         return "Image : " + self.legend
 
+class Service(models.Model):
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    
+    name = models.CharField(max_length=200)
+    logo = models.CharField(max_length=50) # TODO régler ça
+    description = models.TextField()
+    price = models.DecimalField(max_digits=5, decimal_places=2)
+    
 class User(models.Model):
     pass # TODO see what we put here
 
