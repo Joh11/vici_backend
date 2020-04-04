@@ -32,3 +32,23 @@ If it is not up to date, please refer to the file vici/viciapp/models.py.
 - user :: ForeignKey to user
 - stars :: IntegerField
 - message :: TextField
+
+
+
+* Sign Up
+- company name
+- private email
+- password
+
+* Page details
+- compan name (same as sign up)
+- logo image
+- cover image
+- category
+- services
+- opening hours
+- adress (street + city)
+- contacts (email + phone)
+- description
+- other images
+- how can people help
