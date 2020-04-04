@@ -4,7 +4,9 @@ from .models import Company, Image, Service, User, Comment
 
 # Register your models here.
 
-admin.site.register(Company, admin.GeoModelAdmin)
-admin.site.register(Image, admin.GeoModelAdmin)
-admin.site.register(Service, admin.GeoModelAdmin)
-admin.site.register(Comment, admin.GeoModelAdmin)
+current_admin = admin.OSMGeoAdmin
+
+admin.site.register(Company, current_admin)
+admin.site.register(Image, current_admin)
+admin.site.register(Service, current_admin)
+admin.site.register(Comment, current_admin)
