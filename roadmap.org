@@ -11,14 +11,25 @@
 ** TODO Image upload from html ?
 ** TODO See [[https://docs.djangoproject.com/en/3.0/howto/static-files/#serving-uploaded-files-in-development]] for production and static files
 * TODO Map and GPS coordinate stuff
-** See how it is done in the frontend / app
-** Intregrate GeoDjango / GIS system
+** DONE Intregrate GeoDjango / GIS system
+** TODO See how it is done in the frontend / app
+** TODO See if I can serialize PointField objects in a better way
 * TODO Authentification system
 * TODO How to add the rest of the fields for company and user
 ** Which fields for user ?
-** store GPS coordinates ? 
 * TODO Deploy server
 ** TODO Rpi for Bricq bros
 *** With open ports for Marin
 ** Choose to deploy on VPS if enough time ? 
 *** See deployment documentation on Django
+
+
+* Bottlenecks on backend
+** API
+*** Custom filters
+** Images
+*** Handling of user uploaded medias
+*** Upload of images
+** Geodata
+** Authentification system
+

@@ -1,11 +1,14 @@
-from django.db import models
+from django.contrib.gis.db import models
 from django.contrib.auth.models import User
 
 class Company(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
+    help = models.TextField()
+
+    location = models.PointField(null=True)
     # TODO add category
-    # TODO add images and the rest
+    # TODO add the rest
     # TODO add position
 
     def __str__(self):
