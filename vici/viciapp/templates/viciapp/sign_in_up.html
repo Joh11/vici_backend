@@ -12,7 +12,8 @@
   <body onload="setupFormCheck()">
     <main>
       <div class="fomContainer">
-        <form class="signInUp" action="TODO_HANDLE_LOGIN/SIGNUP" method="post">
+        <form class="signInUp" action="{% url 'viciapp:login_process' %}" method="post">
+	  {% csrf_token %}
           <input id="registerFormCheck" type="checkbox" name="register">
 
           <label for="email">E-Mail</label>
