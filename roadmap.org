@@ -6,13 +6,15 @@
 * TODO Map and GPS coordinate stuff
 ** TODO See how it is done in the frontend / app
 ** TODO See if I can serialize PointField objects in a better way
+** SRID represent WGS 84
 * TODO Authentification system
 * TODO How to add the rest of the fields for company and user
 ** Which fields for user ?
 * TODO Deploy server
 ** Choose to deploy on VPS if enough time ? 
 *** See deployment documentation on Django
-
+* TODO Internationalization
+** See [[https://docs.djangoproject.com/en/3.0/topics/i18n/translation/]]
 
 * Bottlenecks on backend
 ** API
