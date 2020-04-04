@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Company(models.Model):
     name = models.CharField(max_length=200)
@@ -18,7 +19,7 @@ def upload_image_dir_path(instance, filename):
 
 class Image(models.Model):
     # Relations
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='images')
     
     # Fields
     legend = models.CharField(max_length=200)
@@ -35,11 +36,8 @@ class Service(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
     
-class User(models.Model):
-    pass # TODO see what we put here
-
 class Comment(models.Model):
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     stars = models.IntegerField(default=5)
     message = models.TextField()

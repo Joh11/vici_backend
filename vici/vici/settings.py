@@ -130,3 +130,4 @@ STATIC_URL = '/static/'
 # Path to storage of user-uploaded images
 # TODO see security checks on django website !
 MEDIA_ROOT = 'media/'
+MEDIA_URL = '/media/'
