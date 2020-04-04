@@ -1,14 +1,15 @@
 from django.urls import path, include
-from tastypie.api import Api
+from tastypie.api import NamespacedApi
 
-from .resources import ServiceResource, CompanyResource
+from .resources import ServiceResource, CompanyResource, CommentResource
 from . import views
 
 app_name = 'viciapp'
 
-v1_api = Api(api_name='v1')
+v1_api = NamespacedApi(api_name='v1', urlconf_namespace=app_name)
 v1_api.register(ServiceResource())
 v1_api.register(CompanyResource())
+v1_api.register(CommentResource())
 
 urlpatterns = [
     path('', views.index, name='index'),

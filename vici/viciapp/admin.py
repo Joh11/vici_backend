@@ -7,5 +7,4 @@ from .models import Company, Image, Service, User, Comment
 admin.site.register(Company)
 admin.site.register(Image)
 admin.site.register(Service)
-admin.site.register(User)
 admin.site.register(Comment)
