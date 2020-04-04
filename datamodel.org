@@ -35,13 +35,14 @@ If it is not up to date, please refer to the file vici/viciapp/models.py.
 
 
 
-* Sign Up
+* Data obtained from website
+** Sign Up
 - company name
 - private email
 - password
 
-* Page details
-- compan name (same as sign up)
+** Page details
+- company name (same as sign up)
 - logo image
 - cover image
 - category
