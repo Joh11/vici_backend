@@ -1,6 +1,7 @@
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 from tastypie.api import NamespacedApi
 
 from .resources import ServiceResource, ImageResource, CompanyResource, CommentResource
@@ -16,6 +17,9 @@ v1_api.register(CommentResource())
 
 urlpatterns = [
     path('', views.index, name='index'),
+
+    path('accounts/', include('django.contrib.auth.urls')),
+    
     path('create_company/', views.create_company, name='create_company'),
     path('details/<int:company_id>/', views.details, name='details'),
     path('all_companies/', views.all_companies, name='all_companies'),

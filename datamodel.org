@@ -16,12 +16,11 @@ If it is not up to date, please refer to the file vici/viciapp/models.py.
 - adress ::
 - contacts :: [CharField]
 
-- help :: TextField
+- help_message :: TextField
 
 ** About images : logo and cover are special
 
 * Service
-- name :: String
 - description :: TextField
 - logo :: CharField
 
