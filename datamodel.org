@@ -4,8 +4,20 @@ work of our fellow frontend devs (Lolo and Jonas).
 If it is not up to date, please refer to the file vici/viciapp/models.py. 
 
 * Company
+- id :: Int
 - name :: CharField
 - description :: TextField
+- category :: Optional Int (Enum)
+- contacts :: [CharField]
+
+- services :: (Relation to Service) (implicit)
+- images :: (Relation)
+
+* Service
+- name :: String
+- description :: TextField
+- price :: Int (nullable)
+- logo :: CharField
 
 * Image
 - company :: ForeignKey to company
