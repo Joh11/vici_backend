@@ -28,7 +28,7 @@ class Image(models.Model):
         return "Image : " + self.legend
 
 class Service(models.Model):
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='services')
     
     name = models.CharField(max_length=200)
     logo = models.CharField(max_length=50) # TODO régler ça
