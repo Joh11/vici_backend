@@ -7,7 +7,7 @@ from .models import Company, Image, Service, Comment
 class CompanyResource(NamespacedModelResource):
     services = fields.ToManyField('viciapp.resources.ServiceResource', 'services')
     comments = fields.ToManyField('viciapp.resources.CommentResource', 'comments')
-    images = fields.ToManyField('viciapp.resources.ImageResource', 'images')
+    images = fields.ToManyField('viciapp.resources.ImageResource', 'images', full=True)
     
     class Meta:
         queryset = Company.objects.all() # TODO for now send all companies
