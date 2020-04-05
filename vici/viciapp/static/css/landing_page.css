@@ -1,0 +1,97 @@
+* {
+  background-color: inherit;
+  color: inherit;
+	font-size:inherit;
+
+}
+
+body {
+  font-size: 12pt;
+  color: #333;
+}
+
+
+/* ******** MAIN ********* */
+main {
+  background-image:url('../img/landingBg.jpg');
+  background-position: center right;
+  background-size: cover;
+  min-height: calc(100vh - 3.9em);
+  overflow: auto;
+}
+
+.container {
+  margin: 4vh 15vw;
+  padding: 4vh 7vw;
+  color: var(--textColor2);
+  background-color: var(--bgColor2);
+  text-align: center;
+  border-radius: 5vh;
+}
+
+#viciLogo {
+  height: 20vh;
+}
+
+.mainTitle {
+  font-size: 26pt;
+  font-weight: bold;
+  color: var(--textColor2);
+  text-align: center;
+}
+
+.landingPageNav {
+  margin-top: 10vh;
+  display: flex;
+  justify-content:space-evenly;
+  flex-direction: row;
+}
+
+.buttonPanel {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex-basis: 35%;
+  align-items: center;
+  justify-content: center;
+  font-size: 11pt;
+  color: var(--textColor3);
+  background-color: var(--bgColor3);
+  border-radius: 2vh;
+  padding: 3%;
+  padding-bottom: 10vh;
+  overflow: hidden;
+}
+
+.linkButton {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 60%;
+  height: 6vh;
+  font-size: 12pt;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bgColor4);
+  border-radius: 1vh;
+  margin: 2vh auto;
+}
+
+.linkButton a {
+  text-decoration: none;
+  color: var(--textColor4)
+}
+
+.linkButton a:hover {
+  color: var(--textColorHover4);
+}
+
+@media(max-width:600px){
+  .landingPageNav{
+    flex-direction: column;
+    margin-top:10vh;
+  }
+  .buttonPanel {
+    margin-top: 4vh;
+  }
+}

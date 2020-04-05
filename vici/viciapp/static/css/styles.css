@@ -1,0 +1,143 @@
+:root {
+  --bgColor1:rgba(25, 130, 4, 1);
+  --bgColorHover1:rgb(0,0,0);
+  --bgColor2:rgb(76, 125, 78);
+  --bgColorHover2:rgb(56, 98, 45);
+  --bgColor3:rgb(141, 185, 129);
+  --bgColorHover3:rgb(0,0,0);
+  --bgColor4:rgb(89, 108, 84);
+  --bgColorHover4:rgb(0,0,0);
+  --textColor1:rgb(104, 159, 92);
+  --textColorHover1:rgb(0,0,0);
+  --textColor2:rgb(139, 187, 133);
+  --textColorHover2:rgb(155, 223, 160);
+  --textColor3:rgb(70, 104, 65);
+  --textColorHover3:rgb(114, 166, 103);
+  --textColor4:rgb(130, 181, 123);
+  --textColorHover4:rgb(178, 232, 167);
+  --alertColor:rgba(255, 127, 0, 1);
+  --successColor1:rgba(100,230,160,1);
+  --successColor2:rgba(53, 169, 204,1);
+  --fontTitle:Arial;
+  --fontParagraph:Arial;
+}
+
+* {
+  line-height:1.6em;
+  font-family: var(--fontParagraph);
+  margin:0;
+  padding: 0;
+}
+
+/* ********** HEADER ********** */
+header {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  height: 2em;
+  background: var(--bgColor2);
+  margin:0;
+  padding: 0;
+}
+
+.mainHeader {
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: auto 0px;
+  align-items: center;
+  padding-right: 10%;
+}
+
+.langCheckbox {
+  float: right;
+  width: 4em;
+}
+
+.langCheckbox select {
+  background-color: inherit;
+  color: var(--textColor2);
+  font-size: 12pt;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+}
+
+.langCheckbox select:hover {
+  color: var(--textColorHover2);
+}
+
+/* ******** FOOTER ********* */
+.mainFooter {
+  display: flex;
+  background-color: var(--bgColor2);
+  color: var(--textColor2);
+  justify-content: space-between;
+}
+
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerContainer:first-child {
+  margin: 0.3em 0.5em 0.8em auto;
+  width: 7em;
+}
+
+.footerContainer:last-child {
+  margin: 0.3em auto 0.8em 0.5em;
+  width: 7em;
+}
+
+.footerContainer a {
+  color: var(--textColor2);
+  text-decoration: none;
+}
+
+.footerContainer a:hover {
+  color: var(--textColorHover2);
+}
+
+.footerContainer hr {
+  color: var(--textColor2);
+}
+
+/* *********** OTHER ********** */
+.errorMsg {
+  color:var(--alertColor);
+}
+
+.textInput {
+  border: none;
+  height: 1.5em;
+  font-size: 12pt;
+  padding: 0.2em 0 0.2em 1em;
+}
+
+textarea {
+  border: none;
+  font-size: 12pt;
+  padding: 0.2em 0 0.2em 1em;
+}
+
+.submitButton {
+  width: min-content;
+  height: 2.5em;
+  border: none;
+  background: var(--successColor2);
+  margin: 0px auto;
+  padding: 0 1em;
+}
+
+.submitButton:hover {
+  background: var(--successColor1);
+}
+
+.inlineInputContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}

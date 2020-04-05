@@ -1,52 +1,27 @@
-:root {
-  --color1:rgba(250,250,250,1);
-  --color2:rgba(10,10,10,1);
-  --color3:rgba(240,240,240,1);
-  --color4:rgba(5,5,5,1);
-  --alertColor:rgba(255, 127, 0, 1);
-  --successColor1:rgba(100,230,160,1);
-  --successColor2:rgba(53, 169, 204,1);
-}
-
-* {
-  font-family: Calibri;
-}
-
-.errorMsg {
-  color:var(--alertColor);
-}
-
-body {
-  width: 100vw;
-  margin: 0px;
-}
 main {
   width: 100%;
-  padding: 20vh 0px;
+  min-height: calc(100vh - 3.9em);
+  
   display: flex;
-
+  
+  overflow: auto;
 }
-.fomContainer {
+
+.formContainer {
+  padding: 15vh 0px;
   display: block;
   margin: 0px auto;
 }
 
-.signInUp {
+#signInUp {
   display: flex;
   flex-direction: column;
   width:20vw;
 
-  background: var(--color3);
+  background: var(--bgColor2);
   padding: 50px;
   border-radius: 20px;
-  color: var(--color4);
-}
-
-.textInput {
-  border: none;
-  height: 1.5em;
-  font-size: 12pt;
-  padding: 0.2em 0 0.2em 1em;
+  color: var(--textColor2);
 }
 
 .formDescription p {
@@ -67,16 +42,8 @@ main {
   cursor: pointer;
 }
 
-.submitButton {
-  width: 5vw;
-  height: 2.5em;
-  border: none;
-  background: var(--successColor2);
-  margin: 0px auto;
-}
-
-.submitButton:hover {
-  background: var(--successColor1);
+#submitErrorJS {
+  text-align: center;
 }
 
 /* Handle sign in/up form change*/

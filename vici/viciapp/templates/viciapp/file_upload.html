@@ -1,0 +1,5 @@
+<form method="post" action="{% url 'viciapp:file_upload_process' %}" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" name="fichier">
+  <input type="submit" value="Submit">
+</form>

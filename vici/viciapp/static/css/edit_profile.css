@@ -1,0 +1,192 @@
+html,body {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  height: auto;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  overflow: auto;
+}
+
+
+/*HEADER*/
+header {
+  width: 100%;
+  background: var(--bgColor1);
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  flex-direction: row-reverse;
+}
+
+.fullNav {
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  margin: auto 0px;
+}
+
+#profileIcon {
+  width: 7vh;
+  min-width: 70px;
+  height: 7vh;
+  min-height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--textColor1); 
+  margin: 1vw;
+}
+
+#profileIcon img {
+  width: 100%;
+}
+
+form {
+  position: relative;
+  height: 7vh;
+  min-height: 70px;
+  display: flex;
+  margin: auto 0px auto 0px;
+}
+
+.logOutButton {
+  display: block;
+  border: none;
+  background: none;
+  height: 2em;
+  margin: auto;
+  color: var(--buttonColor);
+}
+
+.logOutButton:hover {
+  
+  text-decoration: underline;
+}
+ /*MAIN*/ 
+
+main {
+  position: fixed;
+  top:0;
+  padding: calc(100px + 7vh) 0;
+  display:grid;
+  grid-template-columns:  1fr 4fr 1fr;
+  grid-template-rows: 1f;
+  height:100vh;
+  width: 100vw;
+  overflow: auto;
+  z-index: 0;
+  color: var(--textColor1);
+  background: var(--bgColor2);
+}
+
+.editProfileContainer {
+  overflow-y: auto;
+  height: calc(93vh - 100px);
+  width: 100%;
+}
+.formTitle {
+  border-bottom: 2px solid var(--textColor1);
+}
+
+.formContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.formContainer form{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 60%;
+  height:min-content;
+}
+
+/*MANAGE PROFILE FORM*/
+
+#NAPInput {
+  width: 20%;
+}
+
+#city {
+  width: 70%;
+}
+
+/*FILER READER*/
+.file_reader {
+  background: var(--bgColor2);
+  width: 100%
+}
+
+.file_reader>*,.file_reader>*>* {
+  background: var(--bgColor2);
+  font-family: var(--fontParagraph);
+  font-size: 11pt;
+  letter-spacing: normal;
+  
+}
+
+.file_select_buttons {
+  height: 2em;
+  display: flex;
+}
+
+.file_select_buttons>* {
+  line-height:2.5em;
+  background: var(--successColor2);
+  text-transform: none;
+  width: max-content;
+  height: 2.5em;
+  border: none;
+  background: var(--successColor2);
+  margin: 0px 0.5em;
+  padding: 0 1em;
+
+}
+
+.file_select_buttons>*:hover {
+  background: var(--successColor1);
+}
+
+.file_select_buttons>*:active {
+  background: var(--successColor1);
+}
+
+.file_select {
+}
+
+.drop_zone {
+  width: inherit;
+}
+
+.drop_zone p.drop_here {
+  height: 5vw;
+  line-height: 5vw;
+}
+
+.uploaded_item .file_tb_container { 
+}
+
+.uploaded_item {
+}
+
+div.uploaded_item:last-of-type {
+}
+
+.uploaded_item img {
+}
+
+.uploaded_item p {
+
+}
+
+.uploaded_item:hover .delet_item {
+
+}

@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404, render, redirect
 
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 from tastypie.models import ApiKey
 
@@ -43,6 +43,13 @@ def login_process(request):
     print(request.POST['submit'])
     return HttpResponse("POST : {}".format(dict(request.POST)))
 
+def edit_profile(request):
+    return render(request, 'viciapp/edit_profile.html')
+
+def logout(request): # LOGOUT TODO
+    if request.user.is_authenticated:
+        logout(request.user)
+    return redirect(index)
 
 def file_upload(request):
     return render(request, 'viciapp/file_upload.html')
