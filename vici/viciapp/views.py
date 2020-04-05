@@ -61,14 +61,15 @@ def file_upload_process(request):
 # Tweak to make the api key retrievable from the app
 @csrf_exempt # TODO REMOVE LATER
 def login_app(request):
+    """View responsible for giving the API key to the application, given a
+    username and password. The format of the json response can be
+    found in json/login_app_response.json. 
+    """
     print('POST content : ')
     for x in request.POST:
         print("post key {}".format(x))
     username = request.POST['username']
     password = request.POST['password']
-
-    print(username)
-    print(password)
 
     user = authenticate(request, username=username, password=password)
 
@@ -89,15 +90,34 @@ def login_app(request):
 
     feedback = {'success': success, 'errorMessage': error_message, 'apiKey': api_key.key}
     response = JsonResponse(feedback)
-    print(response)
     print(response.content)
     return response
 
+# TODO untested ! 
+@csrf_exempt # TODO REMOVE LATER
 def sign_up_app(request):
     """The view responsible for creating an account from the
     application. It is different from the website login page, as it
     returns a json response with the API key.
 
-    Will check if the 
+    Will check if the credentials are valid, and will return the API
+    key. A format of the response can be found in
+    json/login_app_response.json
     """
-    pass
+    username = request.POST['username']
+    email = request.POST['email']
+    password = request.POST['password']
+
+    # Predefine the response
+    success = False
+    error_message = ""
+    api_key = ""
+
+    user = User.objects.create_user(username, email, password)
+    api_key = user.api_key.key
+
+    feedback = {'success': success, 'errorMessage': error_message, 'apiKey': api_key.key}
+    response = JsonResponse(feedback)
+    print(response.content)
+    return response
+    

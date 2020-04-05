@@ -29,4 +29,5 @@ urlpatterns = [
 
     # Api
     path('login_app/', views.login_app, name='login_app'),
+    path('sign_up_app/', views.sign_up_app, name='sign_up_app'),
     path('api/', include(v1_api.urls))] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
