@@ -19,11 +19,13 @@ v1_api.register(ApiKeyResource())
 urlpatterns = [
     # Main pages
     path('', views.index, name='index'),
+    path('about/', views.about, name='about'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout, name='logout'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
     # Processing pages
     path('login_process/', views.login_process, name='login_process'),
+    path('edit_profile_process/', views.edit_profile_process, name='edit_profile_process'),
 
     # Tweak to remove later
     path('file_upload/', views.file_upload, name='file_upload'),

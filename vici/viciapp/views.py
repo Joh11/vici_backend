@@ -9,12 +9,14 @@ from tastypie.models import ApiKey
 
 # Create your views here.
 
-from .models import Company
+from .models import Company, Image
+from .files import match_file, get_file_from_data
 
 def index(request):
-    if not request.user.is_authenticated:
-        return HttpResponse("You're not logged in. ")
-    return HttpResponse("This is the index. Welcome {}".format(request.user.username))
+    return render(request, 'viciapp/index.html')
+
+def about(request):
+    return render(request, 'viciapp/about.html')
 
 def login_view(request):
     return render(request, 'viciapp/sign_in_up.html')
@@ -45,6 +47,19 @@ def login_process(request):
 
 def edit_profile(request):
     return render(request, 'viciapp/edit_profile.html')
+
+def edit_profile_process(request):
+    print('All possible POST: {} ...'.format(len(request.POST)))
+    for post_key in request.POST:
+        x = match_file(post_key)
+        if x is not None: # It is a file
+            file_input, filename = x
+            # For now put file_input as legend
+            image = Image(company=Company.objects.all()[0], legend=file_input, image=get_file_from_data(request.POST[post_key]))
+            image.save()
+            print('saved {} {}'.format(file_input, filename))
+
+    return HttpResponse('test')
 
 def logout(request): # LOGOUT TODO
     if request.user.is_authenticated:

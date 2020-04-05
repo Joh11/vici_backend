@@ -1,3 +1,19 @@
+* {
+  background-color: inherit;
+  color: inherit;
+}
+
 body{
   min-height: calc(100vh-3.9em);
+}
+
+main {
+  background-color: var(--bgColor1);
+  color: var(--textColor4);
+  padding: 10vh 20vw;
+  display: grid;
+}
+
+.aboutContainer {
+  padding: 5vh 0;
 }

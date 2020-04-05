@@ -1,23 +1,27 @@
 :root {
-  --bgColor1:rgba(25, 130, 4, 1);
+  --bgColor1:rgb(239, 244, 238);
   --bgColorHover1:rgb(0,0,0);
-  --bgColor2:rgb(76, 125, 78);
-  --bgColorHover2:rgb(56, 98, 45);
-  --bgColor3:rgb(141, 185, 129);
-  --bgColorHover3:rgb(0,0,0);
-  --bgColor4:rgb(89, 108, 84);
-  --bgColorHover4:rgb(0,0,0);
-  --textColor1:rgb(104, 159, 92);
-  --textColorHover1:rgb(0,0,0);
-  --textColor2:rgb(139, 187, 133);
-  --textColorHover2:rgb(155, 223, 160);
+  --bgColor2:rgb(250,250,250);
+  --bgColorHover2:rgb(0,0,0);
+  --bgColor3:rgb(144, 196, 130);
+  --bgColorHover3:rgb(91,156,73);
+  --bgColor4:rgb(197, 210, 160);
+  --bgColorHover4:rgb(202,221,152);
+  --headerColor:rgb(109, 145, 102);
+  --footerColor:rgb(168,195,162);
+  --textColor1:rgb(141,211,95);
+  --textColorHover1:rgb(102,158,46);
+  --textColor2:rgb(0,0,0);
+  --textColorHover2:rgb(0,0,0);
   --textColor3:rgb(70, 104, 65);
   --textColorHover3:rgb(114, 166, 103);
-  --textColor4:rgb(130, 181, 123);
-  --textColorHover4:rgb(178, 232, 167);
+  --textColor4:rgb(105, 106, 70);
+  --textColorHover4:rgb(109,134,45);
+  --textHeaderColor:rgb(56,75,52);
+  --textHeaderHoverColor:rgb(34,45,31);
+  --textFooterColor:rgb(88,124,80);
+  --textFooterHoverColor:rgb(44,62,40);
   --alertColor:rgba(255, 127, 0, 1);
-  --successColor1:rgba(100,230,160,1);
-  --successColor2:rgba(53, 169, 204,1);
   --fontTitle:Arial;
   --fontParagraph:Arial;
 }
@@ -29,13 +33,18 @@
   padding: 0;
 }
 
+hr {
+  border-top: 0;
+  border-bottom: 2px solid;
+}
+
 /* ********** HEADER ********** */
 header {
   display: flex;
   flex-direction: row-reverse;
   width: 100%;
   height: 2em;
-  background: var(--bgColor2);
+  background: var(--headerColor);
   margin:0;
   padding: 0;
 }
@@ -57,7 +66,7 @@ header {
 
 .langCheckbox select {
   background-color: inherit;
-  color: var(--textColor2);
+  color: var(--textHeaderColor);
   font-size: 12pt;
   appearance: none;
   -moz-appearance: none;
@@ -66,14 +75,15 @@ header {
 }
 
 .langCheckbox select:hover {
-  color: var(--textColorHover2);
+  color: var(--textHeaderHoverColor);
+  cursor: pointer;
 }
 
 /* ******** FOOTER ********* */
 .mainFooter {
   display: flex;
-  background-color: var(--bgColor2);
-  color: var(--textColor2);
+  background-color: var(--footerColor);
+  color: var(--textFooterColor);
   justify-content: space-between;
 }
 
@@ -84,25 +94,26 @@ header {
 
 .footerContainer:first-child {
   margin: 0.3em 0.5em 0.8em auto;
-  width: 7em;
+  width: 9em;
 }
 
 .footerContainer:last-child {
   margin: 0.3em auto 0.8em 0.5em;
-  width: 7em;
+  width: 9em;
 }
 
 .footerContainer a {
-  color: var(--textColor2);
+  color: var(--textFooterColor);
   text-decoration: none;
 }
 
 .footerContainer a:hover {
-  color: var(--textColorHover2);
+  color: var(--textFooterHoverColor);
+  cursor: pointer;
 }
 
 .footerContainer hr {
-  color: var(--textColor2);
+  background-color: var(--textFooterColor);
 }
 
 /* *********** OTHER ********** */
@@ -112,13 +123,8 @@ header {
 
 .textInput {
   border: none;
+  background: var(--bgColor2);
   height: 1.5em;
-  font-size: 12pt;
-  padding: 0.2em 0 0.2em 1em;
-}
-
-textarea {
-  border: none;
   font-size: 12pt;
   padding: 0.2em 0 0.2em 1em;
 }

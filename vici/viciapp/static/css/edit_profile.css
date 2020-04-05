@@ -1,28 +1,22 @@
-html,body {
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-  height: auto;
+* {
+  background-color: inherit;
+  color: inherit;
 }
 
-html {
-  height: 100%;
+body{
+  min-height: calc(100vh-3.9em);
 }
 
-body {
-  height: 100%;
-  overflow: auto;
+main {
+  background-color: var(--bgColor1);
+  color: var(--textColor4);
+  padding: 10vh 20vw;
+  display: grid;
 }
-
 
 /*HEADER*/
 header {
-  width: 100%;
-  background: var(--bgColor1);
-  display: flex;
-  position: fixed;
-  z-index: 1;
-  flex-direction: row-reverse;
+  height: min-content;
 }
 
 .fullNav {
@@ -40,15 +34,15 @@ header {
   min-height: 70px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid var(--textColor1); 
-  margin: 1vw;
+  border: 2px solid var(--textHeaderColor);
+  margin: 1vh;
 }
 
 #profileIcon img {
   width: 100%;
 }
 
-form {
+header form {
   position: relative;
   height: 7vh;
   min-height: 70px;
@@ -62,37 +56,21 @@ form {
   background: none;
   height: 2em;
   margin: auto;
-  color: var(--buttonColor);
+  color: var(--textHeaderColor);
 }
 
 .logOutButton:hover {
-  
-  text-decoration: underline;
-}
- /*MAIN*/ 
-
-main {
-  position: fixed;
-  top:0;
-  padding: calc(100px + 7vh) 0;
-  display:grid;
-  grid-template-columns:  1fr 4fr 1fr;
-  grid-template-rows: 1f;
-  height:100vh;
-  width: 100vw;
-  overflow: auto;
-  z-index: 0;
-  color: var(--textColor1);
-  background: var(--bgColor2);
+  color: var(--textHeaderHoverColor);
+  cursor: pointer;
 }
 
+/*MAIN*/
 .editProfileContainer {
-  overflow-y: auto;
-  height: calc(93vh - 100px);
   width: 100%;
 }
+
 .formTitle {
-  border-bottom: 2px solid var(--textColor1);
+  border-bottom: 2px solid var(--textColor4);
 }
 
 .formContainer{
@@ -121,16 +99,16 @@ main {
 
 /*FILER READER*/
 .file_reader {
-  background: var(--bgColor2);
+  background: var(--bgColor1);
   width: 100%
 }
 
 .file_reader>*,.file_reader>*>* {
-  background: var(--bgColor2);
+  background: var(--bgColor1);
   font-family: var(--fontParagraph);
   font-size: 11pt;
   letter-spacing: normal;
-  
+
 }
 
 .file_select_buttons {
@@ -140,23 +118,25 @@ main {
 
 .file_select_buttons>* {
   line-height:2.5em;
-  background: var(--successColor2);
+  background: var(--bgColor4);
+  color: var(--textColor4);
   text-transform: none;
   width: max-content;
   height: 2.5em;
   border: none;
-  background: var(--successColor2);
   margin: 0px 0.5em;
   padding: 0 1em;
 
 }
 
 .file_select_buttons>*:hover {
-  background: var(--successColor1);
+  background: var(--bgColorHover4);
+  color: var(--textColorHover4);
+
 }
 
 .file_select_buttons>*:active {
-  background: var(--successColor1);
+  background: var(--bgColorHover4);
 }
 
 .file_select {
@@ -171,7 +151,7 @@ main {
   line-height: 5vw;
 }
 
-.uploaded_item .file_tb_container { 
+.uploaded_item .file_tb_container {
 }
 
 .uploaded_item {

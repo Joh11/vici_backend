@@ -4,7 +4,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
     <link rel="stylesheet" href="{% static 'css/file_reader.css' %}">
     <link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
     <script type="text/javascript" src="{% static 'js/file_reader.js' %}" charset="utf-8"></script>
@@ -19,23 +19,17 @@
         <div id="profileIcon">
           <a href="{% url 'viciapp:edit_profile' %}"><img src="{% static 'img/logo_full.png' %}" alt="profile icon"></a>
         </div>
-        <form id="logOutForm" action="{% url 'viciapp:logout' %}" method="post">
-	  {% csrf_token %}
+        <form id="logOutForm" action="{% url 'viciapp:edit_profile_process' %}" method="post">
           <input class="logOutButton" type="submit" name="logOut" value="Log Out">
         </form>
       </div>
     </header>
     <main>
-      <nav>
-        <div class="navButton">
-          <a href="{% url 'viciapp:edit_profile' %}">Edit Profile</a>
-        </div>
-      </nav>
       <div class="editProfileContainer">
         <div class="formContainer">
           <h2 class="formTitle">Manage Account Data</h2>
           <form class="editData" id="changeAccountData" action="{% url 'viciapp:index' %}" method="post">
-
+	    {% csrf_token %}
             <label for="changeEmail">Change E-Mail</label>
             <span class="errorMsg" id="emailError">{{errorMsgEmail}}</span>
             <span class="errorMsg" id="emailErrorJS"></span>
@@ -57,8 +51,9 @@
 
         <div class="formContainer">
           <h2 class="formTitle">Manage Profile</h2>
-          <form class="editData" id="changeProfileData" action="{% url 'viciapp:index' %}" method="post">
-            <h3>General</h3>
+          <form class="editData" id="changeProfileData" action="{% url 'viciapp:edit_profile_process' %}" method="post" enctype="multipart/form-data">
+	    {% csrf_token %}
+	    <h3>General</h3>
             <label for="">Company Name</label>
             <input class="textInput" type="text" name="" value="">
 
@@ -117,7 +112,20 @@
 
     </main>
     <footer>
-
+      <div class="mainFooter landingFooter">
+        <div class="footerContainer">
+          <p>Help</p>
+          <hr>
+          <a href="{% url 'viciapp:about' %}">FAQ</a>
+        </div>
+        <div class="footerContainer">
+          <p>About us</p>
+          <hr>
+          <a href="{% url 'viciapp:about' %}">Project</a>
+          <a href="{% url 'viciapp:about' %}">Team</a>
+          <a href="{% url 'viciapp:about' %}">Contact Us</a>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

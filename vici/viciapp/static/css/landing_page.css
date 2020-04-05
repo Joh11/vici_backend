@@ -2,7 +2,6 @@
   background-color: inherit;
   color: inherit;
 	font-size:inherit;
-
 }
 
 body {
@@ -13,30 +12,32 @@ body {
 
 /* ******** MAIN ********* */
 main {
+  /*
   background-image:url('../img/landingBg.jpg');
   background-position: center right;
-  background-size: cover;
+  background-size: cover;*/
+  background-color: var(--bgColor1);
   min-height: calc(100vh - 3.9em);
   overflow: auto;
 }
 
 .container {
   margin: 4vh 15vw;
-  padding: 4vh 7vw;
-  color: var(--textColor2);
-  background-color: var(--bgColor2);
+  padding: 0vh 7vw 4vh 7vw;
+  color: var(--textColor1);
+  background-color: var(--bgColor1);
   text-align: center;
-  border-radius: 5vh;
+  border-radius: 3vh;
 }
 
 #viciLogo {
-  height: 20vh;
+  height: 30vh;
 }
 
 .mainTitle {
   font-size: 26pt;
   font-weight: bold;
-  color: var(--textColor2);
+  color: var(--textColor1);
   text-align: center;
 }
 
@@ -67,23 +68,29 @@ main {
   display: flex;
   position: absolute;
   bottom: 0;
-  width: 60%;
+  width:80%;
   height: 6vh;
   font-size: 12pt;
   align-items: center;
   justify-content: center;
   background-color: var(--bgColor4);
   border-radius: 1vh;
-  margin: 2vh auto;
+  margin: 2vh 2vh;
+  overflow: hidden;
 }
 
 .linkButton a {
+  height: 100%;
+  width: 100%;
   text-decoration: none;
-  color: var(--textColor4)
+  color: var(--textColor4);
+  line-height: 6vh;
 }
 
 .linkButton a:hover {
   color: var(--textColorHover4);
+  background-color: var(--bgColorHover4);
+  cursor: pointer;
 }
 
 @media(max-width:600px){
