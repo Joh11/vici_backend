@@ -92,3 +92,12 @@ def login_app(request):
     print(response)
     print(response.content)
     return response
+
+def sign_up_app(request):
+    """The view responsible for creating an account from the
+    application. It is different from the website login page, as it
+    returns a json response with the API key.
+
+    Will check if the 
+    """
+    pass

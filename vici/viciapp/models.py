@@ -13,10 +13,9 @@ class Company(models.Model):
     description = models.TextField()
     location = models.PointField(null=True)
     category = models.IntegerField()
-    help_message = models.TextField()
+    help_message = models.TextField(blank=True)
 
     opening_hours = models.CharField(max_length=400)
-    adress = models.CharField(max_length=400)
 
     # TODO add category
     # TODO add the rest
@@ -27,6 +26,11 @@ class Company(models.Model):
 
 # Image handling
 # Images will be saved in media/<company_id>/
+
+class AdressPart(models.Model):
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='company')
+
+    data = models.CharField(max_length=200)
 
 def upload_image_dir_path(instance, filename):
     return 'company_{}/{}'.format(instance.company_id, filename)
