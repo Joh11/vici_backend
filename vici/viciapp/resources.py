@@ -66,7 +66,6 @@ class ImageResource(NamespacedModelResource):
     class Meta:
         queryset = Image.objects.all()
         serializer = CamelCaseJSONSerializer()
-        excludes = ['id']
         
 class ServiceResource(NamespacedModelResource):
     company = fields.ForeignKey(CompanyResource, 'company')
