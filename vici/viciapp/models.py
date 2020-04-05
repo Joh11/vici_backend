@@ -26,7 +26,7 @@ class Company(models.Model):
 # Images will be saved in media/<company_id>/
 
 class AdressPart(models.Model):
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='company')
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='adress_parts')
 
     data = models.CharField(max_length=200)
 

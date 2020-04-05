@@ -10,17 +10,23 @@ from tastypie.authentication import BasicAuthentication
 
 
 from .serializer import CamelCaseJSONSerializer
-from .models import Company, Image, Service, Comment
+from .models import Company, AdressPart, Image, Service, Comment
 
 class CompanyResource(NamespacedModelResource):
     services = fields.ToManyField('viciapp.resources.ServiceResource', 'services')
     comments = fields.ToManyField('viciapp.resources.CommentResource', 'comments')
+    adress_parts = fields.ToManyField('viciapp.resources.AdressPartResource', 'adress_parts')
     images = fields.ToManyField('viciapp.resources.ImageResource', 'images', full=True)
     
     class Meta:
         queryset = Company.objects.all() # TODO for now send all companies
         serializer = CamelCaseJSONSerializer()
 
+class AdressPartResource(NamespacedModelResource):
+    class Meta:
+        queryset = AdressPart.objects.all()
+        serializer = CamelCaseJSONSerializer()
+        
 class ImageResource(NamespacedModelResource):
     class Meta:
         queryset = Image.objects.all()
