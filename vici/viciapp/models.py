@@ -3,10 +3,7 @@ from django.contrib.auth.models import User
 
 from tastypie.models import create_api_key
 
-import sys
-import PIL.Image
-from io import BytesIO
-from django.core.files.uploadedfile import InMemoryUploadedFile
+from .image import compress_under_size
 
 # Generate an API key every time a User is created
 models.signals.post_save.connect(create_api_key, sender=User)
@@ -48,9 +45,10 @@ class Image(models.Model):
     
     def save(self, *args, **kwargs):
         instance = super(Image, self).save(*args, **kwargs)
-        image = PIL.Image.open(self.image.path)
+        # image = PIL.Image.open(self.image.path)
         print('Compressing images ...')
-        image.save(self.image.path, quality=20, optimize=True)
+        # image.save(self.image.path, quality=20, optimize=True)
+        compress_under_size(400*1000, self.image.path)
         return instance
             
 
