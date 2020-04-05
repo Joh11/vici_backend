@@ -56,12 +56,6 @@ class CompanyResource(NamespacedModelResource):
         semi_filtered = super(CompanyResource, self).apply_filters(request, applicable_filters)
 
         return semi_filtered.filter(custom) if custom else semi_filtered
-        
-    # def apply_filter(self, objects, options=None):
-    #     return objects.filter(category=1)
-        # if options and 'longitude' in options and 'latitude' in options and 'radius' in options:
-        #     pnt = fromstr('POINT({} {})'.format(options['latitude'], options['longitude']), srid=4326)
-        #     return objects.filter(location__distance_lte=(pnt, options['radius']))
 
 class AdressPartResource(NamespacedModelResource):
     class Meta:
