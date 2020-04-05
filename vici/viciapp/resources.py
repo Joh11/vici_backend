@@ -46,21 +46,6 @@ class CompanyResource(NamespacedModelResource):
             orm_filters.update({'custom': qset})
 
         return orm_filters
-
-    # def build_filters(self, filters=None):
-    #     if filters is None:
-    #         filters = {}
-    #     orm_filters = super(CompanyResource, self).build_filters(filters)
-        
-    #     if('query' in filters):
-    #         query = filters['query']
-    #         print('query = {}'.format(query))
-    #         qset = (Q(id=query))
-            
-    #         orm_filters.update({'custom': qset})
-
-    #     return orm_filters
-
     
     def apply_filters(self, request, applicable_filters):
         if 'custom' in applicable_filters:
