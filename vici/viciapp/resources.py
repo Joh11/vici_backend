@@ -3,7 +3,8 @@ from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 
 from django.contrib.gis.geos import Point
-from django.contrib.gis.measure import Distance
+from django.contrib.gis.measure import D
+from django.contrib.gis.db.models.functions import Distance
 
 from tastypie import fields
 from tastypie.resources import NamespacedModelResource
@@ -21,30 +22,33 @@ class CompanyResource(NamespacedModelResource):
     comments = fields.ToManyField('viciapp.resources.CommentResource', 'comments')
     adress_parts = fields.ToManyField('viciapp.resources.AdressPartResource', 'adress_parts', full=True)
     images = fields.ToManyField('viciapp.resources.ImageResource', 'images', full=True)
+
+    point = None
     
     class Meta:
         queryset = Company.objects.all() # TODO for now send all companies
         serializer = CamelCaseJSONSerializer()
         excludes = ['id']
         filtering = {'category': ALL,}
+        ordering = {'location'}
 
     def build_filters(self, filters=None):
         if filters is None:
             filters = {}
         orm_filters = super(CompanyResource, self).build_filters(filters)
-        
+
+        # Implement radius filtering
         if 'lng' in filters and 'lat' in filters and 'r' in filters:
             lng = float(filters['lng'])
             lat = float(filters['lat'])
             r = float(filters['r'])
 
-            point = Point(lng, lat, srid=4326)
+            self.point = Point(lng, lat, srid=4326)
             
             print('lng, lat, r = {},{},{}'.format(lng, lat, r))
-            qset = (Q(location__distance_lte=(point, Distance(km=r))))
+            qset = (Q(location__distance_lte=(self.point, D(km=r))))
             
-            orm_filters.update({'custom': qset})
-
+            orm_filters.update({'custom': qset})            
         return orm_filters
     
     def apply_filters(self, request, applicable_filters):
@@ -56,6 +60,31 @@ class CompanyResource(NamespacedModelResource):
         semi_filtered = super(CompanyResource, self).apply_filters(request, applicable_filters)
 
         return semi_filtered.filter(custom) if custom else semi_filtered
+
+    def apply_sorting(self, obj_list, options=None):
+        print('APPLY SORTING ...')
+        print(type(obj_list))
+        print(obj_list)
+
+        print(type(options))
+        print(options)
+
+        # If there is a order_by=distance (or -distance)
+        if 'order_by' in options:
+            f = options['order_by']
+            if f == 'distance' or f == '-distance' and self.point is not None:
+                options = options.copy()
+                options.pop('order_by') # remove it from the querydict options
+                # sort !
+                obj_list = obj_list.annotate(distance=Distance('location', self.point)).order_by(f)
+                self.point = None # unset point to make sure we keep no trace of previous requests
+            else:
+                f = None
+        else:
+            f = None
+
+        # return super
+        return super(CompanyResource, self).apply_sorting(obj_list, options)
 
 class AdressPartResource(NamespacedModelResource):
     class Meta:
