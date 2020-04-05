@@ -1,6 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
@@ -64,7 +64,6 @@ def login_app(request):
     print('POST content : ')
     for x in request.POST:
         print("post key {}".format(x))
-    return HttpResponse("")
     username = request.POST['username']
     password = request.POST['password']
 
@@ -72,10 +71,21 @@ def login_app(request):
     print(password)
 
     user = authenticate(request, username=username, password=password)
+
+    success = False
+    error_message = ""
+    api_key = ""
     if user is not None:
         try:
             api_key = user.api_key
         except ApiKey.DoesNotExist:
-            return HttpResponse("")
-        return HttpResponse(str(api_key))
-    return HttpResponse("")
+            # if it did not work because there was no API key
+            error_message = "User has no API key attached"
+        # if it worked
+        success = True
+    else:
+        # if wrong credentials
+        error_message = "Wrong credentials"
+
+    feedback = {'success': success, 'errorMessage': error_message, 'apiKey': api_key}
+    return JsonResponse(feedback)
