@@ -1,6 +1,12 @@
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+
 from tastypie import fields
 from tastypie.resources import NamespacedModelResource
 from tastypie.constants import ALL, ALL_WITH_RELATIONS
+from tastypie.http import HttpForbidden, HttpUnauthorized
+from tastypie.models import ApiKey
+from tastypie.authentication import BasicAuthentication
 
 
 from .serializer import CamelCaseJSONSerializer
@@ -35,3 +41,33 @@ class CommentResource(NamespacedModelResource):
         queryset = Comment.objects.all()
         serializer = CamelCaseJSONSerializer()
 
+class ApiKeyResource(NamespacedModelResource):
+    """A resource to return the API key to the mobile app from username
+    and password"""
+    class Meta:
+        queryset = ApiKey.objects.all() # TODO something else
+        # fields = ['key']
+        # detail_allowed_methods = []
+        # list_allowed_methods = ['get']
+        authentication = BasicAuthentication()
+
+    def login(self, request, **kwargs):
+        self.method_check(request, allowed=['post'])
+        return self.create_response(request, {
+                    'success': True
+                })
+
+        data = self.deserialize(request, request.raw_post_data, format=request.META.get('CONTENT_TYPE', 'application/json'))
+
+        username = data.get('username', '')
+        password = data.get('password', '')
+
+        user = authenticate(username=username, password=password)
+        if user:
+            return self.create_response(request, {
+                    'success': True
+                })
+        else:
+            return self.create_response(request, {
+                    'success': True
+                })

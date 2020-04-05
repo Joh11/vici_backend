@@ -1,6 +1,11 @@
 from django.contrib.gis.db import models
 from django.contrib.auth.models import User
 
+from tastypie.models import create_api_key
+
+# Generate an API key every time a User is created
+models.signals.post_save.connect(create_api_key, sender=User)
+
 class Company(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='company')
     

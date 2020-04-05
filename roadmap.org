@@ -1,5 +1,6 @@
 * TODO API and iOS communication
 ** TODO Add custom filter for Geodata
+** TODO Check CSRF Tokens issues with login_app
 * TODO Find out how to handle images in db (and data url and such like said Jonas)
 ** TODO Image upload from html ?
 ** TODO See [[https://docs.djangoproject.com/en/3.0/howto/static-files/#serving-uploaded-files-in-development]] for production and static files

@@ -1,8 +1,11 @@
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404, render
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+
+from tastypie.models import ApiKey
 
 # Create your views here.
 
@@ -32,7 +35,7 @@ def login_process(request):
         # TODO check passwords match
         # TODO handle exceptions request POST access
         
-        user = User.objects.create_user(email, email, password)
+        user = User.objects.create_useRelatedObr(email, email, password)
         login(request, user) # Login the newly created user
     else:
         pass # TODO error page ?
@@ -54,3 +57,25 @@ def file_upload_process(request):
             for chunk in f.chunks():
                 dest.write(chunk)
     return HttpResponse("request.FILES = {}".format(dict(request.FILES)))
+
+# Tweak to make the api key retrievable from the app
+@csrf_exempt # TODO REMOVE LATER
+def login_app(request):
+    print('POST content : ')
+    for x in request.POST:
+        print("post key {}".format(x))
+    return HttpResponse("")
+    username = request.POST['username']
+    password = request.POST['password']
+
+    print(username)
+    print(password)
+
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        try:
+            api_key = user.api_key
+        except ApiKey.DoesNotExist:
+            return HttpResponse("")
+        return HttpResponse(str(api_key))
+    return HttpResponse("")

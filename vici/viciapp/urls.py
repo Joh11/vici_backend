@@ -4,7 +4,7 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from tastypie.api import NamespacedApi
 
-from .resources import ServiceResource, ImageResource, CompanyResource, CommentResource
+from .resources import ServiceResource, ImageResource, CompanyResource, CommentResource, ApiKeyResource
 from . import views
 
 app_name = 'viciapp'
@@ -14,11 +14,19 @@ v1_api.register(ServiceResource())
 v1_api.register(ImageResource())
 v1_api.register(CompanyResource())
 v1_api.register(CommentResource())
+v1_api.register(ApiKeyResource())
 
 urlpatterns = [
+    # Main pages
     path('', views.index, name='index'),
     path('login/', views.login_view, name='login'),
+    # Processing pages
     path('login_process/', views.login_process, name='login_process'),
+
+    # Tweak to remove later
     path('file_upload/', views.file_upload, name='file_upload'),
     path('file_upload_process/', views.file_upload_process, name='file_upload_process'),
+
+    # Api
+    path('login_app/', views.login_app, name='login_app'),
     path('api/', include(v1_api.urls))] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
