@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.gis.geos import *
 
 from tastypie import fields
 from tastypie.resources import NamespacedModelResource
@@ -13,15 +14,20 @@ from .serializer import CamelCaseJSONSerializer
 from .models import Company, AdressPart, Image, Service, Comment
 
 class CompanyResource(NamespacedModelResource):
-    services = fields.ToManyField('viciapp.resources.ServiceResource', 'services')
+    services = fields.ToManyField('viciapp.resources.ServiceResource', 'services', full=True)
     comments = fields.ToManyField('viciapp.resources.CommentResource', 'comments')
-    adress_parts = fields.ToManyField('viciapp.resources.AdressPartResource', 'adress_parts')
+    adress_parts = fields.ToManyField('viciapp.resources.AdressPartResource', 'adress_parts', full=True)
     images = fields.ToManyField('viciapp.resources.ImageResource', 'images', full=True)
     
     class Meta:
         queryset = Company.objects.all() # TODO for now send all companies
         serializer = CamelCaseJSONSerializer()
         excludes = ['id']
+
+    # def apply_filters(self, objects, options=None):
+    #     if options and 'longitude' in options and 'latitude' in options and 'radius' in options:
+    #         pnt = fromstr('POINT({} {})'.format(options['latitude'], options['longitude']), srid=4326)
+    #         return objects.filter(location__distance_lte=(pnt, options['radius']))
 
 class AdressPartResource(NamespacedModelResource):
     class Meta:
