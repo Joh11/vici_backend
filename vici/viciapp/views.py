@@ -87,5 +87,8 @@ def login_app(request):
         # if wrong credentials
         error_message = "Wrong credentials"
 
-    feedback = {'success': success, 'errorMessage': error_message, 'apiKey': api_key}
-    return JsonResponse(feedback)
+    feedback = {'success': success, 'errorMessage': error_message, 'apiKey': str(api_key)}
+    response = JsonResponse(feedback)
+    print(response)
+    print(response.content)
+    return response
