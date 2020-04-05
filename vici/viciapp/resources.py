@@ -1,6 +1,9 @@
 from django.contrib.auth.models import User
+from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.gis.geos import *
+
+from django.contrib.gis.geos import Point
+from django.contrib.gis.measure import Distance
 
 from tastypie import fields
 from tastypie.resources import NamespacedModelResource
@@ -23,11 +26,57 @@ class CompanyResource(NamespacedModelResource):
         queryset = Company.objects.all() # TODO for now send all companies
         serializer = CamelCaseJSONSerializer()
         excludes = ['id']
+        filtering = {'category': ALL,}
 
-    # def apply_filters(self, objects, options=None):
-    #     if options and 'longitude' in options and 'latitude' in options and 'radius' in options:
-    #         pnt = fromstr('POINT({} {})'.format(options['latitude'], options['longitude']), srid=4326)
-    #         return objects.filter(location__distance_lte=(pnt, options['radius']))
+    def build_filters(self, filters=None):
+        if filters is None:
+            filters = {}
+        orm_filters = super(CompanyResource, self).build_filters(filters)
+        
+        if 'lng' in filters and 'lat' in filters and 'r' in filters:
+            lng = float(filters['lng'])
+            lat = float(filters['lat'])
+            r = float(filters['r'])
+
+            point = Point(lng, lat, srid=4326)
+            
+            print('lng, lat, r = {},{},{}'.format(lng, lat, r))
+            qset = (Q(location__distance_lte=(point, Distance(km=r))))
+            
+            orm_filters.update({'custom': qset})
+
+        return orm_filters
+
+    # def build_filters(self, filters=None):
+    #     if filters is None:
+    #         filters = {}
+    #     orm_filters = super(CompanyResource, self).build_filters(filters)
+        
+    #     if('query' in filters):
+    #         query = filters['query']
+    #         print('query = {}'.format(query))
+    #         qset = (Q(id=query))
+            
+    #         orm_filters.update({'custom': qset})
+
+    #     return orm_filters
+
+    
+    def apply_filters(self, request, applicable_filters):
+        if 'custom' in applicable_filters:
+            custom = applicable_filters.pop('custom')
+        else:
+            custom = None
+            
+        semi_filtered = super(CompanyResource, self).apply_filters(request, applicable_filters)
+
+        return semi_filtered.filter(custom) if custom else semi_filtered
+        
+    # def apply_filter(self, objects, options=None):
+    #     return objects.filter(category=1)
+        # if options and 'longitude' in options and 'latitude' in options and 'radius' in options:
+        #     pnt = fromstr('POINT({} {})'.format(options['latitude'], options['longitude']), srid=4326)
+        #     return objects.filter(location__distance_lte=(pnt, options['radius']))
 
 class AdressPartResource(NamespacedModelResource):
     class Meta:
