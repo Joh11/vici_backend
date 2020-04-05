@@ -11,7 +11,7 @@ class Company(models.Model):
     
     name = models.CharField(max_length=200)
     description = models.TextField()
-    location = models.PointField(blank=True)
+    location = models.PointField(null=True)
     category = models.IntegerField()
     help_message = models.TextField(blank=True)
 
