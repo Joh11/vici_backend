@@ -11,15 +11,13 @@ class Company(models.Model):
     
     name = models.CharField(max_length=200)
     description = models.TextField()
-    location = models.PointField(null=True)
+    location = models.PointField(blank=True)
     category = models.IntegerField()
     help_message = models.TextField(blank=True)
 
-    opening_hours = models.CharField(max_length=400)
+    opening_hours = models.CharField(max_length=400, blank=True)
 
-    # TODO add category
     # TODO add the rest
-    # TODO add position
 
     def __str__(self):
         return self.name
