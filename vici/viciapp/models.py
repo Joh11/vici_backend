@@ -51,7 +51,7 @@ class Contact(models.Model):
 class Service(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='services')
     
-    logo = models.CharField(max_length=50) # TODO régler ça
+    category = models.IntegerField()
     description = models.TextField()
     
 class Comment(models.Model):
