@@ -21,6 +21,7 @@ class CompanyResource(NamespacedModelResource):
     class Meta:
         queryset = Company.objects.all() # TODO for now send all companies
         serializer = CamelCaseJSONSerializer()
+        excludes = ['id']
 
 class AdressPartResource(NamespacedModelResource):
     class Meta:
@@ -31,7 +32,7 @@ class ImageResource(NamespacedModelResource):
     class Meta:
         queryset = Image.objects.all()
         serializer = CamelCaseJSONSerializer()
-
+        excludes = ['id']
         
 class ServiceResource(NamespacedModelResource):
     company = fields.ForeignKey(CompanyResource, 'company')
@@ -44,6 +45,7 @@ class ServiceResource(NamespacedModelResource):
 class CommentResource(NamespacedModelResource):
     company = fields.ForeignKey(CompanyResource, 'company')
     class Meta:
+        excludes = ['id']
         queryset = Comment.objects.all()
         serializer = CamelCaseJSONSerializer()
 
