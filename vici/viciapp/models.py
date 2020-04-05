@@ -48,12 +48,9 @@ class Image(models.Model):
     
     def save(self, *args, **kwargs):
         instance = super(Image, self).save(*args, **kwargs)
-        print("{}".format(self.image.path))
         image = PIL.Image.open(self.image.path)
-        print('Je compresse ...')
-        print("{}".format(self.image.path))
+        print('Compressing images ...')
         image.save(self.image.path, quality=20, optimize=True)
-        print("{}".format(self.image.path))
         return instance
             
 
