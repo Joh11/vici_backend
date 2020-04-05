@@ -1,5 +1,6 @@
 * Active tasks : 
-** TODO Make 10 copies of companies in db
+** TODO Compress every image in rpi
+** TODO Sort from nearest to furthest in API
 
 * TODO API and iOS communication
 ** Put permissions everywhere using API key
