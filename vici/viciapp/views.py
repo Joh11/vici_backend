@@ -35,7 +35,7 @@ def login_process(request):
         # TODO check passwords match
         # TODO handle exceptions request POST access
         
-        user = User.objects.create_useRelatedObr(email, email, password)
+        user = User.objects.create_user(email, email, password)
         login(request, user) # Login the newly created user
     else:
         pass # TODO error page ?
