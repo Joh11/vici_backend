@@ -15,12 +15,11 @@ from tastypie.authentication import BasicAuthentication
 
 
 from .serializer import CamelCaseJSONSerializer
-from .models import Company, AdressPart, Image, Service, Comment
+from .models import Company, Image, Service, Comment
 
 class CompanyResource(NamespacedModelResource):
     services = fields.ToManyField('viciapp.resources.ServiceResource', 'services', full=True)
     comments = fields.ToManyField('viciapp.resources.CommentResource', 'comments')
-    adress_parts = fields.ToManyField('viciapp.resources.AdressPartResource', 'adress_parts', full=True)
     images = fields.ToManyField('viciapp.resources.ImageResource', 'images', full=True)
 
     point = None
@@ -84,12 +83,7 @@ class CompanyResource(NamespacedModelResource):
 
         # return super
         return super(CompanyResource, self).apply_sorting(obj_list, options)
-
-class AdressPartResource(NamespacedModelResource):
-    class Meta:
-        queryset = AdressPart.objects.all()
-        serializer = CamelCaseJSONSerializer()
-        
+    
 class ImageResource(NamespacedModelResource):
     class Meta:
         queryset = Image.objects.all()

@@ -17,21 +17,18 @@ class Company(models.Model):
     category = models.IntegerField()
     help_message = models.TextField(blank=True)
 
+    street = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    phone = models.CharField(max_length=200)
+    
     opening_hours = models.CharField(max_length=400, blank=True)
-
-    # TODO add the rest
 
     def __str__(self):
         return self.name
 
 # Image handling
 # Images will be saved in media/<company_id>/
-
-class AdressPart(models.Model):
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='adress_parts')
-
-    data = models.CharField(max_length=200)
-
 def upload_image_dir_path(instance, filename):
     return 'company_{}/{}'.format(instance.company_id, filename)
 

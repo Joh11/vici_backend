@@ -1,4 +1,7 @@
 * Active tasks : 
+** add email, phone adress
+** TODO HTTPS
+
 ** TODO help Marin with connection
 ** TODO add error messages
 
@@ -8,27 +11,10 @@
 ** TODO Tell Bricq bros that they have to retrieve csrf token for security reasons (low priority)
 ** TODO Test and debug account creation page ; add failsafe
 ** TODO Check if order_by is working
-* TODO Find out how to handle images in db (and data url and such like said Jonas)
-** TODO Image upload from html ?
-** TODO See [[https://docs.djangoproject.com/en/3.0/howto/static-files/#serving-uploaded-files-in-development]] for production and static files
-** Compress images
-* TODO Map and GPS coordinate stuff
-** TODO See how it is done in the frontend / app
-** TODO See if I can serialize PointField objects in a better way
-** SRID represent WGS 84
 * TODO Authentification system
-* TODO How to add the rest of the fields for company and user
-** Which fields for user ?
-* TODO Deploy server
-** Choose to deploy on VPS if enough time ? 
-*** See deployment documentation on Django
 * TODO Internationalization
 ** See [[https://docs.djangoproject.com/en/3.0/topics/i18n/translation/]]
 
 * Bottlenecks on backend
-** Images
-*** Handling of user uploaded medias
-*** Upload of images
-** Geodata
 ** Authentification system
 
