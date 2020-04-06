@@ -25,6 +25,7 @@ main {
 }
 
 .aboutFaces img {
-  width: 12%;
+  width: 7.2vw;
+  height: 7.2vw;
   border-radius: 50%;
 }
