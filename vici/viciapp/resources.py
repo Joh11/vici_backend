@@ -30,7 +30,7 @@ class CompanyResource(NamespacedModelResource):
         filtering = {'category': ALL,}
         ordering = {'location'}
 
-    def build_filters(self, filters=None):
+    def build_filters(self, filters=None, ignore_bad_filters=False):
         if filters is None:
             filters = {}
         orm_filters = super(CompanyResource, self).build_filters(filters)
