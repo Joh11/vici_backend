@@ -26,7 +26,7 @@
 
     <main>
       <div class="formContainer">
-        <form id="signInUp" action="TODO_HANDLE_LOGIN/SIGNUP" method="post">
+        <form id="signInUp" action="{% url 'viciapp:login_process' %}" method="post">
           {% csrf_token %}
           <input id="registerFormCheck" type="checkbox" name="register">
 
