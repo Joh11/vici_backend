@@ -18,12 +18,12 @@ class CompanyForm(forms.Form):
 
     # services
     service1_cat = forms.ChoiceField(choices=service_categories, label='Service # 1 category')
-    service1_desc = forms.CharField(widget=forms.Textarea, label='Service # 1 description')
+    service1_desc = forms.CharField(widget=forms.Textarea, label='Service # 1 description', required=False)
 
     service2_cat = forms.ChoiceField(choices=service_categories, label='Service # 2 category')
-    service2_desc = forms.CharField(widget=forms.Textarea, label='Service # 2 description')
+    service2_desc = forms.CharField(widget=forms.Textarea, label='Service # 2 description', required=False)
 
     service3_cat = forms.ChoiceField(choices=service_categories, label='Service # 3 category')
-    service3_desc = forms.CharField(widget=forms.Textarea, label='Service # 3 description')
+    service3_desc = forms.CharField(widget=forms.Textarea, label='Service # 3 description', required=False)
 
     

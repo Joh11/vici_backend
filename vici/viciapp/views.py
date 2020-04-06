@@ -51,6 +51,9 @@ def login_process(request):
 #     return render(request, 'viciapp/edit_profile.html')
 
 def edit_profile(request):
+    if not request.user.is_authenticated:
+        return redirect('viciapp:login')
+    
     if request.method == 'POST':
         form = CompanyForm(request.POST)
 
@@ -58,18 +61,26 @@ def edit_profile(request):
             # Add the company
             c = form.cleaned_data
             company = Company(user=request.user, name=c['name'], description=c['description'], location=c['location'], category=c['category'], help_message=c['help_message'], opening_hours=c['opening_hours'])
-
-            service1 = Service(company=company, category=c['service1_cat'], description=c['service1_desc'])
-            service2 = Service(company=company, category=c['service2_cat'], description=c['service2_desc'])
-            service3 = Service(company=company, category=c['service3_cat'], description=c['service3_desc'])
-
-            company.save()
-            service1.save()
-            service2.save()
-            service3.save()
             
+            if c['service1_desc']:
+                service1 = Service(company=company, category=c['service1_cat'], description=c['service1_desc'])
+            if c['service2_desc']:
+                service2 = Service(company=company, category=c['service2_cat'], description=c['service2_desc'])
+            if c['service3_desc']:
+                service3 = Service(company=company, category=c['service3_cat'], description=c['service3_desc'])
+                            
+            # remove previous company and services
+            Service.objects.filter(company__user=request.user).delete()
+            Company.objects.filter(user=request.user).delete()
+            
+            company.save()
+            if c['service1_desc']:
+                service1.save()
+            if c['service2_desc']:
+                service2.save()
+            if c['service3_desc']:                
+                service3.save()
             return redirect('index')
-
     else:
         form = CompanyForm()
 
