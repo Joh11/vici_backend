@@ -1,10 +1,11 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/landing_page.css">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/landing_page.css' %}">
 
 
   <title>Vici | Home</title>
@@ -13,25 +14,25 @@
 <body>
   <header>
     <div class="mainHeader landingHeader">
-      <script id="language_script" data-languages="en,fr" data-debug="1" src="js/language_selector.js"></script>
+      <script id="language_script" data-languages="en,fr" data-debug="1" src="{% static 'js/language_selector.js' %}"></script>
 
       <div class="headerHome">
-        <a href="index.html">Home</a>
+        <a href="{% url 'viciapp:index' %}">Home</a>
       </div>
 
       <language class="headerLang" id="langSelector" data-type="select">
       </language>
 
       <div class="headerSignIn">
-        <a lang="en" href="sign_in_up.html">Sign In</a>
-        <a lang="fr" href="sign_in_up.html">Se connecter</a>
+        <a lang="en" href="{% url 'viciapp:login' %}">Sign In</a>
+        <a lang="fr" href="{% url 'viciapp:login' %}">Se connecter</a>
       </div>
     </div>
   </header>
 
   <main>
     <div class="container">
-      <img src="img/viciLogo.png" id="viciLogo" alt="logo">
+      <img src="{% static 'img/viciLogo.png' %}" id="viciLogo" alt="logo">
       <h1 lang="en" class="mainTitle" id="mainTitleLanding">Welcome to VICI</h1>
       <h1 lang="fr" class="mainTitle" id="mainTitleLanding">Bienvenue chez VICI</h1>
       <h2 lang="en">A platform to give visibility to small businesses and local companies. Find all your favorite places in a single app.
@@ -48,8 +49,8 @@
 
           </div>
           <div class="linkButton">
-            <a lang="en" href="sign_in_up.html">Sign In/Sign Up</a>
-            <a lang="fr" href="sign_in_up.html">Se connecter/S'enregistrer</a>
+            <a lang="en" href="{% url 'viciapp:login' %}">Sign In/Sign Up</a>
+            <a lang="fr" href="{% url 'viciapp:login' %}">Se connecter/S'enregistrer</a>
           </div>
         </div>
 
@@ -60,8 +61,8 @@
 
           </div>
           <div class="linkButton">
-            <a lang="en" href="about.html">About Vici</a>
-            <a lang="fr" href="about.html">En savoir plus</a>
+            <a lang="en" href="{% url 'viciapp:about' %}">About Vici</a>
+            <a lang="fr" href="{% url 'viciapp:about' %}">En savoir plus</a>
           </div>
         </div>
       </div>
@@ -74,18 +75,18 @@
         <p lang="en">Help</p>
         <p lang="fr">Aide</p>
         <hr>
-        <a href="about.html#aboutFaq">FAQ</a>
+        <a href="{% url 'viciapp:about' %}#aboutFaq">FAQ</a>
       </div>
       <div class="footerContainer">
         <p lang="en">About us</p>
         <p lang="fr">Sur nous</p>
         <hr>
-        <a lang="en" href="about.html#aboutProject">Project</a>
-        <a lang="en" href="about.html#aboutTeam">Team</a>
-        <a lang="en" href="about.html#aboutContact">Contact Us</a>
-        <a lang="fr" href="about.html#aboutProject">Projet</a>
-        <a lang="fr" href="about.html#aboutTeam">Team</a>
-        <a lang="fr" href="about.html#aboutContact">Contactez Nous</a>
+        <a lang="en" href="{% url 'viciapp:about' %}#aboutProject">Project</a>
+        <a lang="en" href="{% url 'viciapp:about' %}#aboutTeam">Team</a>
+        <a lang="en" href="{% url 'viciapp:about' %}#aboutContact">Contact Us</a>
+        <a lang="fr" href="{% url 'viciapp:about' %}#aboutProject">Projet</a>
+        <a lang="fr" href="{% url 'viciapp:about' %}#aboutTeam">Team</a>
+        <a lang="fr" href="{% url 'viciapp:about' %}#aboutContact">Contactez Nous</a>
       </div>
     </div>
   </footer>

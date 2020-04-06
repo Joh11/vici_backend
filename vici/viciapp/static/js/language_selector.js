@@ -130,7 +130,7 @@ var languageSelector = {
         "gl": "Galician",
         "fi": "Finnish",
         "fo": "Faroese",
-        "fr": "French",
+        "fr": "Français",
         "en": "English",
         "ka": "Georgian",
         "el": "Greek",

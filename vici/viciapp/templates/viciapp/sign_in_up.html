@@ -1,10 +1,11 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/singn_in_up.css">
-    <script type="text/javascript" src="js/sign_in_up_form_check.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/singn_in_up.css' %}">
+    <script type="text/javascript" src="{% static 'js/sign_in_up_form_check.js' %}" charset="utf-8"></script>
 
     <title>Vici | Sign In or Register</title>
   </head>
@@ -12,10 +13,10 @@
   <body onload="setupFormCheck()">
     <header>
       <div class="mainHeader signInUpHeader">
-        <script id="language_script" data-languages="en,fr" data-debug="1" src="js/language_selector.js"></script>
+        <script id="language_script" data-languages="en,fr" data-debug="1" src="{% static 'js/language_selector.js' %}"></script>
 
         <div class="headerHome">
-          <a href="index.html">Home</a>
+          <a href="{% url 'viciapp:index' %}">Home</a>
         </div>
 
         <language class="headerLang" id="langSelector" data-type="select">
@@ -26,6 +27,7 @@
     <main>
       <div class="formContainer">
         <form id="signInUp" action="TODO_HANDLE_LOGIN/SIGNUP" method="post">
+          {% csrf_token %}
           <input id="registerFormCheck" type="checkbox" name="register">
 
           <label for="email">E-Mail</label>
@@ -51,8 +53,8 @@
           <input class="registerInput textInput" type="password" id="pwConfirm" name="pwConfirm">
 
           <div class="formDescription registerInput">
-            <p lang="en">I have read and accept the <a href="terms_and_conditions.html" target="_blank">terms and conditions...</a></p>
-            <p lang="fr">J'ai lu et j'accepte les <a href="terms_and_conditions.html" target="_blank">conditions génerales d'utilisation...</a></p>
+            <p lang="en">I have read and accept the <a href="{% url 'viciapp:terms_and_conditions' %}" target="_blank">terms and conditions...</a></p>
+            <p lang="fr">J'ai lu et j'accepte les <a href="{% url 'viciapp:terms_and_conditions' %}" target="_blank">conditions génerales d'utilisation...</a></p>
           </div>
           <label class="registerInput" id="termsAndConditionsLabel" for="termsAndConditionsCheck"></label>
           <input class="registerInput" id="termsAndConditionsCheck" type="checkbox" name="" value="">
@@ -84,18 +86,18 @@
           <p lang="en">Help</p>
           <p lang="fr">Aide</p>
           <hr>
-          <a href="about.html#aboutFaq">FAQ</a>
+          <a href="{% url 'viciapp:about' %}#aboutFaq">FAQ</a>
         </div>
         <div class="footerContainer">
           <p lang="en">About us</p>
           <p lang="fr">Sur nous</p>
           <hr>
-          <a lang="en" href="about.html#aboutProject">Project</a>
-          <a lang="en" href="about.html#aboutTeam">Team</a>
-          <a lang="en" href="about.html#aboutContact">Contact Us</a>
-          <a lang="fr" href="about.html#aboutProject">Projet</a>
-          <a lang="fr" href="about.html#aboutTeam">Team</a>
-          <a lang="fr" href="about.html#aboutContact">Contactez Nous</a>
+          <a lang="en" href="{% url 'viciapp:about' %}#aboutProject">Project</a>
+          <a lang="en" href="{% url 'viciapp:about' %}#aboutTeam">Team</a>
+          <a lang="en" href="{% url 'viciapp:about' %}#aboutContact">Contact Us</a>
+          <a lang="fr" href="{% url 'viciapp:about' %}#aboutProject">Projet</a>
+          <a lang="fr" href="{% url 'viciapp:about' %}#aboutTeam">Team</a>
+          <a lang="fr" href="{% url 'viciapp:about' %}#aboutContact">Contactez Nous</a>
         </div>
       </div>
     </footer>

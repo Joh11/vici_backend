@@ -23,6 +23,7 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout, name='logout'),
     path('edit_profile/', views.edit_profile, name='edit_profile'),
+    path('terms_and_conditions/', views.tac, name='terms_and_conditions'),
     # Processing pages
     path('login_process/', views.login_process, name='login_process'),
     # path('edit_profile_process/', views.edit_profile_process, name='edit_profile_process'),

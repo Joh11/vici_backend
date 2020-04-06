@@ -1,9 +1,11 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/edit_profile.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
+    {{ form.media }}
     <title>Vici | Edit Profile</title>
 
     <script type="text/javascript">
@@ -11,17 +13,17 @@
         var openingHoursList=document.getElementById('openingHoursList');
         nbOfChilds=openingHoursList.childElementCount;
 
-        if(nbOfChilds<7) {
+        if(nbOfChilds<2) {
           var listItem=document.createElement('li');
           listItem.innerHTML=`<div class="inlineInputContainer">
-            <input class="textInput dayInput" type="text" name="dayInput`+(nbOfChilds+1)+`" value="">
+            <input class="textInput dayInput" type="text" name="dayInput`+(nbOfChilds+1)+`" value="Sa" disabled>
             <input class="textInput hoursInput" type="text" name="hoursInput`+(nbOfChilds+1)+`" value="">
           </div>`;
           openingHoursList.appendChild(listItem);
         }
         else {
           //do this in a more fancy way if more time
-          alert('A regular week has only 7 days ;)');
+          alert('Take a rest day ;)');
         }
       }
 
@@ -43,9 +45,10 @@
     <header>
       <div class="fullNav">
         <div id="profileIcon">
-          <a href="edit_profile.html"><img src="img/logo_full.png" alt="profile icon"></a>
+          <a href="{% url 'viciapp:edit_profile' %}"><img src="{% static 'img/logo_full.png' %}" alt="profile icon"></a>
         </div>
-        <form id="logOutForm" action="index.html" method="post">
+        <form id="logOutForm" action="{% url 'viciapp:index' %}" method="post">
+          {% csrf_token %}
           <input class="logOutButton" type="submit" name="logOut" value="Log Out">
         </form>
       </div>
@@ -55,8 +58,8 @@
       <div class="editProfileContainer">
         <div class="formContainer">
           <h2 class="formTitle">Manage Account Data</h2>
-          <form class="editData" id="changeAccountData" action="index.html" method="post">
-
+          <form class="editData" id="changeAccountData" action="{% url 'viciapp:index' %}" method="post">
+            {% csrf_token %}
             <label for="changeEmail">Change E-Mail</label>
             <span class="errorMsg" id="emailError">{{errorMsgEmail}}</span>
             <span class="errorMsg" id="emailErrorJS"></span>
@@ -78,149 +81,9 @@
 
         <div class="formContainer">
           <h2 class="formTitle">Manage Profile</h2>
-          <form class="editData" id="changeProfileData" action="index.html" method="post">
-            <h3>General</h3>
-            <label for="">Company Name</label>
-            <input class="textInput" type="text" name="" value="">
-
-            <label for="">Logo</label>
-            <input type="file" id="logoImgLabel" name="logoImg" value="">
-            <label for="">Cover Photo</label>
-            <input type="file" id="coverImgLabel" name="coverImg" value="">
-
-            <h3>Opening Hours</h3>
-            <div class="openingHoursContainer">
-              <ul id="openingHoursList">
-                <li>
-                  <div class="inlineInputContainer">
-                    <input class="textInput dayInput" type="text" name="dayInput1" value="" placeholder="Mo-Fr">
-                    <input class="textInput hoursInput" type="text" name="hoursInput1" value="" placeholder="8:30-16:30">
-                  </div>
-                </li>
-              </ul>
-              <button type="button" name="button" onclick="addOpeningHourCb()">+</button>
-              <button type="button" name="button" onclick="removeOpeningHourCb()">-</button>
-            </div>
-
-            <h3>Categories</h3>
-            <div class="selectionContainer">
-              <div class="radioOrCheckboxContainer">
-                <input type="radio" class="radioOrCheckbox" id="restaurantRadio" name="Category" value="restaurant">
-                <label for="restaurantRadio" class="textLabelRadioOrCheckbox">Restaurant</label>
-                <label for="restaurantRadio" class="icon" id="restaurantRadioIcon"></label>
-              </div>
-              <div class="radioOrCheckboxContainer">
-                <input type="radio" class="radioOrCheckbox" id="epicerieRadio" name="Category" value="epicerie">
-                <label for="epicerieRadio" class="textLabelRadioOrCheckbox">Grocery Shop</label>
-                <label for="epicerieRadio" class="icon" id="epicerieRadioIcon"></label>
-              </div>
-              <div class="radioOrCheckboxContainer">
-                <input type="radio" class="radioOrCheckbox" id="fruitVegetablesRadio" name="Category" value="fruitVegetables">
-                <label for="fruitVegetablesRadio" class="textLabelRadioOrCheckbox">Agricultural Products</label>
-                <label for="fruitVegetablesRadio" class="icon" id="fruitVegetablesRadioIcon"></label>
-              </div>
-              <div class="radioOrCheckboxContainer">
-                <input type="radio" class="radioOrCheckbox" id="artisanatRadio" name="Category" value="artisanat">
-                <label for="artisanatRadio" class="textLabelRadioOrCheckbox">Handcraft</label>
-                <label for="artisanatRadio" class="icon" id="artisanatRadioIcon"></label>
-              </div>
-              <div class="radioOrCheckboxContainer">
-                <input type="radio" class="radioOrCheckbox" id="fleuristeRadio"name="Category" value="fleuriste">
-                <label for="fleuristeRadio" class="textLabelRadioOrCheckbox">Florist</label>
-                <label for="fleuristeRadio" class="icon" id="fleuristeRadioIcon"></label>
-              </div>
-              <div class="radioOrCheckboxContainer">
-                <input type="radio" class="radioOrCheckbox" id="modeRadio"name="Category" value="mode">
-                <label for="modeRadio" class="textLabelRadioOrCheckbox">Mode and Clothing</label>
-                <label for="modeRadio" class="icon" id="modeRadioIcon"></label>
-              </div>
-              <div class="radioOrCheckboxContainer">
-                <input type="radio" class="radioOrCheckbox" id="boulangerieRadio"name="Category" value="boulangerie">
-                <label for="boulangerieRadio" class="textLabelRadioOrCheckbox">Baker</label>
-                <label for="boulangerieRadio" class="icon" id="boulangerieRadioIcon"></label>
-              </div>
-              <div class="radioOrCheckboxContainer">
-                <input type="radio" class="radioOrCheckbox" id="childrenRadio"name="Category" value="children">
-                <label for="childrenRadio" class="textLabelRadioOrCheckbox">Products for Children</label>
-                <label for="childrenRadio" class="icon" id="childrenRadioIcon"></label>
-              </div>
-              <div class="radioOrCheckboxContainer">
-                <input type="radio" class="radioOrCheckbox" id="alimentaireRadio"name="Category" value="alimentaire">
-                <label for="alimentaireRadio" class="textLabelRadioOrCheckbox">Food Industry</label>
-                <label for="alimentaireRadio" class="icon" id="alimentaireRadioIcon"></label>
-              </div>
-              <div class="radioOrCheckboxContainer">
-                <input type="radio" class="radioOrCheckbox" id="sportRadio"name="Category" value="sport">
-                <label for="sportRadio" class="textLabelRadioOrCheckbox">Sport</label>
-                <label for="sportRadio" class="icon" id="sportRadioIcon" ></label>
-              </div>
-              <div class="radioOrCheckboxContainer selectOther">
-                <input type="radio" class="radioOrCheckbox" id="otherRadio"name="Category" value="other">
-                <input class="textInput" type="text" name="categoryOtherName" value="" placeholder="Other">
-                <label for="otherRadio" class="icon" id="otherRadioIcon"></label>
-              </div>
-            </div>
-
-            <h3>Services</h3>
-            <div class="selectionContainer">
-              <div class="radioOrCheckboxContainer">
-                <input type="checkbox" class="radioOrCheckbox" id="directShopping" name="servicesArray[]" />
-                <label for="directShopping" class="textLabelRadioOrCheckbox">Direct Shopping</label>
-                <label for="directShopping" class="icon" id="directShoppingIcon"></label>
-              </div>
-              <div class="radioOrCheckboxContainer">
-                <input type="checkbox" class="radioOrCheckbox" id="onlineShopping" name="servicesArray[]" />
-                <label for="onlineShopping" class="textLabelRadioOrCheckbox">Online Shopping</label>
-                <label for="onlineShopping" class="icon" id="onlineShoppingIcon"></label>
-              </div>
-              <div class="radioOrCheckboxContainer">
-                <input type="checkbox" class="radioOrCheckbox" id="charity" name="servicesArray[]" />
-                <label for="charity" class="textLabelRadioOrCheckbox">Charity</label>
-                <label for="charity" class="icon" id="charityIcon"></label>
-              </div>
-              <div class="radioOrCheckboxContainer">
-                <input type="checkbox" class="radioOrCheckbox" id="delivery" name="servicesArray[]" />
-                <label for="delivery" class="textLabelRadioOrCheckbox">Delivery</label>
-                <label for="delivery" class="icon" id="deliveryIcon"></label>
-              </div>
-              <div class="radioOrCheckboxContainer selectOther">
-                <input type="checkbox" class="radioOrCheckbox" id="otherServices" name="servicesOther"/>
-                <input class="textInput" type="text" name="servicesOtherName" value="" placeholder="Other">
-                <label for="otherServices" class="icon" id="otherServicesIcon"></label>
-              </div>
-            </div>
-
-            <h3>Address</h3>
-            <label for="">Street</label>
-            <input class="textInput" type="text" name="street" value="">
-
-            <label for="">City</label>
-            <div class="inlineInputContainer">
-              <input class="textInput" id="NAPInput" type="text" name="NAP" value="">
-              <input class="textInput" id="city" type="text" name="cityName" value="">
-            </div>
-            <label for="">Country</label>
-            <input class="textInput" type="text" name="country" value="">
-
-
-            <h3>Contact</h3>
-            <label for="">Email</label>
-            <input class="textInput" type="text" name="" value="">
-
-            <label for="">Phone</label>
-            <input class="textInput" type="text" name="" value="">
-
-            <h3>About the Company</h3>
-            <label for="">Description</label>
-            <textarea name="descritionTxt" rows="8" cols="80"></textarea>
-
-            <label for="">How Can People Help?</label>
-            <textarea name="helpUsTxt" rows="8" cols="80"></textarea>
-
-            <label for="">Info Images</label>
-            <input type="file" id="additionalImgsLabel" name="additionalImgs[]" value="" multiple>
-
-            <input class="submitButton"  id="applyProfileChanges" type="submit" name="changeProfileData" value="Apply Changes">
+          <form class="editData" id="changeProfileData" action="{% url 'viciapp:index' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
           </form>
         </div>
       </div>
@@ -231,14 +94,14 @@
         <div class="footerContainer">
           <p>Help</p>
           <hr>
-          <a href="about.html">FAQ</a>
+          <a href="{% url 'viciapp:about' %}">FAQ</a>
         </div>
         <div class="footerContainer">
           <p>About us</p>
           <hr>
-          <a href="about.html">Project</a>
-          <a href="about.html">Team</a>
-          <a href="about.html">Contact Us</a>
+          <a href="{% url 'viciapp:about' %}#aboutProject">Project</a>
+          <a href="{% url 'viciapp:about' %}#aboutTeam">Team</a>
+          <a href="{% url 'viciapp:about' %}#aboutContact">Contact Us</a>
         </div>
       </div>
     </footer>

@@ -50,6 +50,9 @@ def login_process(request):
 # def edit_profile(request):
 #     return render(request, 'viciapp/edit_profile.html')
 
+def tac(request):
+    return render(request, 'viciapp/terms_and_conditions')
+
 def edit_profile(request):
     if not request.user.is_authenticated:
         return redirect('viciapp:login')

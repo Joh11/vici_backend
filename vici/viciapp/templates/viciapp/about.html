@@ -1,27 +1,28 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Vici | About</title>
 
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
   </head>
   <body>
     <header>
       <div class="mainHeader aboutHeader">
-        <script id="language_script" data-languages="en,fr" data-debug="1" src="js/language_selector.js"></script>
+        <script id="language_script" data-languages="en,fr" data-debug="1" src="{% static 'js/language_selector.js' %}"></script>
 
         <div class="headerHome">
-          <a href="index.html">Home</a>
+          <a href="{% url 'viciapp:index' %}">Home</a>
         </div>
 
         <language class="headerLang" id="langSelector" data-type="select">
         </language>
 
         <div class="headerSignIn">
-          <a lang="en" href="sign_in_up.html">Sign In</a>
-          <a lang="fr" href="sign_in_up.html">Se connecter</a>
+          <a lang="en" href="{% url 'viciapp:login' %}">Sign In</a>
+          <a lang="fr" href="{% url 'viciapp:login' %}">Se connecter</a>
         </div>
       </div>
     </header>
@@ -42,22 +43,22 @@
           <p lang="en">We’re a team of 8 friends and EPFL Master’s students. The project Vici arose during the “LauzHack against Covid-19” creativity marathon organized by a student association of EPFL. By the end of this 72 hours creativity marathon, the students should have developed their project idea and prove its viability. We took advantage of this occasion to mobilise our brains on a project we had at heart: add importance to social cohesion, allow consumers and local producers to find each other in order for everyone to realize that all that we need isn’t very far away.</p>
           <p lang="fr">Nous sommes une équipe de huit amis et étudiants en Master à l’EPFL. Le projet Vici est né lors du Hackathon “LauzHack against Covid-19” organisé par un comité de l’EPFL. Lors de cet évènement les étudiants ont 72 heures (et chaque heure compte) pour développer un projet et prouver sa viabilité. Nous avons vu là l’occasion parfaite de développer un projet qui nous tenait à coeur, à savoir créer du lien social dans la ville, faire se rencontrer consommateurs et producteurs locaux afin que chacun se rende compte que tout ce dont on a besoin est déjà sous nos yeux, en toute vicinité.</p>
           <div class="aboutFaces">
-            <img src="img/faces/abricq.png" alt="profile">
-            <img src="img/faces/mbricq.png" alt="profile">
-            <img src="img/faces/abernard.png" alt="profile">
-            <img src="img/faces/jfelisaz.png" alt="profile">
-            <img src="img/faces/ljacqueroud.png" alt="profile">
-            <img src="img/faces/smichel.png" alt="profile">
-            <img src="img/faces/lmussa.png" alt="profile">
-            <img src="img/faces/julbrich.png" alt="profile">
+            <img src="{% static 'img/faces/abricq.png' %}" alt="profile">
+            <img src="{% static 'img/faces/mbricq.png' %}" alt="profile">
+            <img src="{% static 'img/faces/abernard.png' %}" alt="profile">
+            <img src="{% static 'img/faces/jfelisaz.png' %}" alt="profile">
+            <img src="{% static 'img/faces/ljacqueroud.png' %}" alt="profile">
+            <img src="{% static 'img/faces/smichel.png' %}" alt="profile">
+            <img src="{% static 'img/faces/lmussa.png' %}" alt="profile">
+            <img src="{% static 'img/faces/julbrich.png' %}" alt="profile">
           </div>
         </div>
         <div id="aboutContact" class="aboutContainer">
           <h1 lang="en">Contact Us</h1>
           <h1 lang="fr">Contactez nous</h1>
           <hr>
-          <p lang="en">TODO</p>
-          <p lang="fr">TODO</p>
+          <p lang="en">You can find us on devpost at <a href="https://devpost.com/software/vici" target="_blank">https://devpost.com/software/vici</a> </p>
+          <p lang="fr">Vous pouvez nous trouver sur devpost à l'adresse <a href="https://devpost.com/software/vici" target="_blank">https://devpost.com/software/vici</a></p>
         </div>
         <div id="aboutFaq" class="aboutContainer">
           <h1 lang="en">FAQ</h1>
@@ -101,18 +102,18 @@
           <p lang="en">Help</p>
           <p lang="fr">Aide</p>
           <hr>
-          <a href="about.html#aboutFaq">FAQ</a>
+          <a href="{% url 'viciapp:about' %}#aboutFaq">FAQ</a>
         </div>
         <div class="footerContainer">
           <p lang="en">About us</p>
           <p lang="fr">Sur nous</p>
           <hr>
-          <a lang="en" href="about.html#aboutProject">Project</a>
-          <a lang="en" href="about.html#aboutTeam">Team</a>
-          <a lang="en" href="about.html#aboutContact">Contact Us</a>
-          <a lang="fr" href="about.html#aboutProject">Projet</a>
-          <a lang="fr" href="about.html#aboutTeam">Team</a>
-          <a lang="fr" href="about.html#aboutContact">Contactez Nous</a>
+          <a lang="en" href="{% url 'viciapp:about' %}#aboutProject">Project</a>
+          <a lang="en" href="{% url 'viciapp:about' %}#aboutTeam">Team</a>
+          <a lang="en" href="{% url 'viciapp:about' %}#aboutContact">Contact Us</a>
+          <a lang="fr" href="{% url 'viciapp:about' %}#aboutProject">Projet</a>
+          <a lang="fr" href="{% url 'viciapp:about' %}#aboutTeam">Team</a>
+          <a lang="fr" href="{% url 'viciapp:about' %}#aboutContact">Contactez Nous</a>
         </div>
       </div>
     </footer>
