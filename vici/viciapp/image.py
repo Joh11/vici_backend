@@ -24,7 +24,7 @@ def compress_under_size(size, file_path):
 
         compress_pic(file_path, quality)
         current_size = os.stat(file_path.replace(".jpg","_c.jpg")).st_size
-        quality  = int(quality * 3 / 4)
+        quality -= 5 
         print(quality)
     os.rename(file_path.replace('.jpg', '_c.jpg'), file_path)
 
