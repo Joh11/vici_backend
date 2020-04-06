@@ -98,8 +98,14 @@ class ServiceResource(NamespacedModelResource):
         excludes = ['id']
         serializer = CamelCaseJSONSerializer()
 
+class UserResource(NamespacedModelResource):
+    class Meta:
+        queryset= User.objects.all()
+        fields=[]
+        
 class CommentResource(NamespacedModelResource):
     company = fields.ForeignKey(CompanyResource, 'company')
+    user  = fields.ForeignKey(UserResource, 'user')
     class Meta:
         excludes = ['id']
         queryset = Comment.objects.all()

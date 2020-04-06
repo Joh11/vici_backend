@@ -4,13 +4,14 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from tastypie.api import NamespacedApi
 
-from .resources import ServiceResource, ImageResource, CompanyResource, CommentResource, ApiKeyResource
+from .resources import ServiceResource, ImageResource, CompanyResource, CommentResource, ApiKeyResource, UserResource
 from . import views
 
 app_name = 'viciapp'
 
 v1_api = NamespacedApi(api_name='v1', urlconf_namespace=app_name)
 v1_api.register(ServiceResource())
+v1_api.register(UserResource())
 v1_api.register(ImageResource())
 v1_api.register(CompanyResource())
 v1_api.register(CommentResource())
