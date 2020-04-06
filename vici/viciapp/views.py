@@ -9,8 +9,10 @@ from tastypie.models import ApiKey
 
 # Create your views here.
 
-from .models import Company, Image
-from .files import match_file, get_file_from_data
+from .models import Company, Image, Service
+from .forms import CompanyForm
+
+
 
 def index(request):
     return render(request, 'viciapp/index.html')
@@ -45,21 +47,46 @@ def login_process(request):
     print(request.POST['submit'])
     return HttpResponse("POST : {}".format(dict(request.POST)))
 
+# def edit_profile(request):
+#     return render(request, 'viciapp/edit_profile.html')
+
 def edit_profile(request):
-    return render(request, 'viciapp/edit_profile.html')
+    if request.method == 'POST':
+        form = CompanyForm(request.POST)
 
-def edit_profile_process(request):
-    print('All possible POST: {} ...'.format(len(request.POST)))
-    for post_key in request.POST:
-        x = match_file(post_key)
-        if x is not None: # It is a file
-            file_input, filename = x
-            # For now put file_input as legend
-            image = Image(company=Company.objects.all()[0], legend=file_input, image=get_file_from_data(request.POST[post_key]))
-            image.save()
-            print('saved {} {}'.format(file_input, filename))
+        if form.is_valid():
+            # Add the company
+            c = form.cleaned_data
+            company = Company(user=request.user, name=c['name'], description=c['description'], location=c['location'], category=c['category'], help_message=c['help_message'], opening_hours=c['opening_hours'])
 
-    return HttpResponse('test')
+            service1 = Service(company=company, category=c['service1_cat'], description=c['service1_desc'])
+            service2 = Service(company=company, category=c['service2_cat'], description=c['service2_desc'])
+            service3 = Service(company=company, category=c['service3_cat'], description=c['service3_desc'])
+
+            company.save()
+            service1.save()
+            service2.save()
+            service3.save()
+            
+            return redirect('index')
+
+    else:
+        form = CompanyForm()
+
+    return render(request, 'viciapp/edit_profile.html', {'form': form})
+
+# def edit_profile_process(request):
+#     print('All possible POST: {} ...'.format(len(request.POST)))
+#     for post_key in request.POST:
+#         x = match_file(post_key)
+#         if x is not None: # It is a file
+#             file_input, filename = x
+#             # For now put file_input as legend
+#             image = Image(company=Company.objects.all()[0], legend=file_input, image=get_file_from_data(request.POST[post_key]))
+#             image.save()
+#             print('saved {} {}'.format(file_input, filename))
+
+#     return HttpResponse('test')
 
 def logout(request): # LOGOUT TODO
     if request.user.is_authenticated:

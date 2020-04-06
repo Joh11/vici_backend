@@ -1,0 +1,76 @@
+main {
+  width: 100%;
+  min-height: calc(100vh - 3.9em);
+  display: flex;
+  overflow: auto;
+}
+
+p, label, input {
+  font-size: 12pt;
+}
+
+.formContainer {
+  padding: 15vh 0px;
+  display: block;
+  margin: 0px auto;
+}
+
+#signInUp {
+  display: flex;
+  flex-direction: column;
+  width:20vw;
+
+  background: var(--bgColor1);
+  padding: 50px;
+  border-radius: 20px;
+  color: var(--textColor4);
+}
+
+.formDescription p {
+  margin: 2vh 0px 0px 0px;
+  padding: 0;
+  text-align: center;
+}
+
+.formDescription a {
+  color: var(--textColor1);
+}
+
+.formDescription a:hover {
+  color: var(--textColorHover1);
+}
+
+
+.changeForm p {
+  text-decoration: underline;
+  color: var(--textColor1);
+  margin: 0px 0px -1vh 0px;
+  padding:  0px;
+  text-align: center;
+}
+
+.changeForm p:hover {
+  cursor: pointer;
+  color: var(--textColorHover1);
+}
+
+#submitErrorJS {
+  text-align: center;
+}
+
+/* Handle sign in/up form change*/
+.registerInput {
+  display: none;
+}
+
+#registerFormCheck {
+  display: none;
+}
+
+#registerFormCheck:checked ~ .registerInput, #registerFormCheck:checked ~ div .registerInput, #registerFormCheck:checked ~ label .registerInput {
+  display: block;
+}
+
+#registerFormCheck:checked ~ .logInInput, #registerFormCheck:checked ~ label .logInInput, #registerFormCheck:checked ~ div .logInInput {
+  display: none;
+}

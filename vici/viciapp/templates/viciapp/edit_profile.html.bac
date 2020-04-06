@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
     <link rel="stylesheet" href="{% static 'css/file_reader.css' %}">
     <link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
-    {{ form.media }}
+
     <title>Vici | Edit Profile</title>
   </head>
   <body>
@@ -16,7 +16,7 @@
         <div id="profileIcon">
           <a href="{% url 'viciapp:edit_profile' %}"><img src="{% static 'img/logo_full.png' %}" alt="profile icon"></a>
         </div>
-        <form id="logOutForm" action="" method="post">
+        <form id="logOutForm" action="{% url 'viciapp:edit_profile_process' %}" method="post">
           <input class="logOutButton" type="submit" name="logOut" value="Log Out">
         </form>
       </div>
@@ -48,9 +48,48 @@
 
         <div class="formContainer">
           <h2 class="formTitle">Manage Profile</h2>
-          <form class="editData" id="changeProfileData" action="" method="post" enctype="multipart/form-data">
+          <form class="editData" id="changeProfileData" action="{% url 'viciapp:edit_profile_process' %}" method="post" enctype="multipart/form-data">
 	    {% csrf_token %}
-	    {{ form }}
+	    <h3>General</h3>
+            <label for="">Company Name</label>
+            <input class="textInput" type="text" name="" value="">
+
+            <label for="">Logo</label>
+            <input type="file" name="logo">
+            <label for="">Cover Photo</label>
+            <input type="file" name="cover">
+
+            <label for="">Category</label>
+            <label for="">Services</label>
+
+            <h3>Address</h3>
+            <label for="">Street</label>
+            <input class="textInput" type="text" name="street" value="">
+
+            <label for="">City</label>
+            <div class="inlineInputContainer">
+              <input class="textInput" id="NAPInput" type="text" name="NAP" value="">
+              <input class="textInput" id="city" type="text" name="cityName" value="">
+            </div>
+
+
+            <h3>Contact</h3>
+            <label for="">Email</label>
+            <input class="textInput" type="text" name="" value="">
+
+            <label for="">Phone</label>
+            <input class="textInput" type="text" name="" value="">
+
+            <h3>About the Company</h3>
+            <label for="">Description</label>
+            <textarea name="descritionTxt" rows="8" cols="80"></textarea>
+
+            <label for="">Info Images</label>
+	    <input type="file" name="images" multiple>
+
+            <label for="">How Can People Help?</label>
+            <textarea name="helpUsTxt" rows="8" cols="80"></textarea>
+
             <input class="submitButton"  id="applyProfileChanges" type="submit" name="changeProfileData" value="Apply Changes">
           </form>
         </div>

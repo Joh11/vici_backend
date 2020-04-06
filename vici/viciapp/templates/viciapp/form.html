@@ -1,0 +1,14 @@
+<html>
+  <head>
+    {{form.media}}
+  </head>
+  <body>
+    <div>
+      <form method="post">
+	{% csrf_token %}
+	{{ form }}
+	<input type="submit" >
+      </form>
+    </div>
+  </body>
+</html>
