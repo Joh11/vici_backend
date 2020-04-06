@@ -32,6 +32,3 @@ class CompanyForm(forms.Form):
 
     service3_cat = forms.ChoiceField(choices=service_categories, label='Service # 3 category')
     service3_desc = forms.CharField(widget=forms.Textarea, label='Service # 3 description', required=False)
-
-    
-name
