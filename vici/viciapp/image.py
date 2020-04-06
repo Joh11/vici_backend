@@ -8,7 +8,7 @@ def compress_under_size(size, file_path):
     and the size is the maximum size in bytes it can be which this 
     function searches until it achieves an approximate supremum'''
 
-    quality = 80 #not the best value as this usually increases size
+    quality = 20 #not the best value as this usually increases size
 
     current_size = os.stat(file_path).st_size
 
