@@ -7,3 +7,14 @@
 - apt install binutils libproj-dev gdal-bin
 - Run './manage.py runserver'
 - Enjoy !
+
+* Recipe to add liquid templates for html
+On top of page, add {% load static%}. 
+
+For static files (css or js for example) : 
+css/styles.css -----> {% static 'css/styles.css' %}
+
+For pages (html)
+index.html -----> {% url 'viciapp:index' %}
+See the file vici/viciapp/urls.py for a list of possible choices. 
+It corresponds to the name='__' words

@@ -45,7 +45,7 @@ def login_process(request):
         pass # TODO error page ?
     
     print(request.POST['submit'])
-    return HttpResponse("POST : {}".format(dict(request.POST)))
+    return redirect('viciapp:index')
 
 # def edit_profile(request):
 #     return render(request, 'viciapp/edit_profile.html')
