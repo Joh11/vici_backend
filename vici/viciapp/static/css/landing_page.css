@@ -72,10 +72,9 @@ main {
   height: 6vh;
   font-size: 12pt;
   align-items: center;
-  justify-content: center;
   background-color: var(--bgColor4);
   border-radius: 1vh;
-  margin: 2vh 2vh;
+  margin: 2vh auto;
   overflow: hidden;
 }
 

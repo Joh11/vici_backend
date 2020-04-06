@@ -1,0 +1,55 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Vici | Terms and Conditions</title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/terms_and_conditions.cs' %}">
+  </head>
+  <body>
+    <header>
+      <div class="mainHeader aboutHeader">
+        <script id="language_script" data-languages="en,fr" data-debug="1" src="{% static 'js/language_selector.js' %}"></script>
+
+        <language class="headerLang" id="langSelector" data-type="select">
+        </language>
+      </div>
+    </header>
+
+    <main>
+      <div class="aboutContainer">
+        <div id="termsContainer" class="aboutContainer">
+          <h1 lang="en">Terms and Conditions</h1>
+          <h1 lang="fr">Conditions d'utilisation</h1>
+          <hr>
+          <p lang="en">Work in progress...</p>
+          <p lang="fr">Work in progress...</p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="mainFooter landingFooter">
+        <div class="footerContainer">
+          <p lang="en">Help</p>
+          <p lang="fr">Aide</p>
+          <hr>
+          <a href="{% url 'viciapp:about' %}#aboutFaq">FAQ</a>
+        </div>
+        <div class="footerContainer">
+          <p lang="en">About us</p>
+          <p lang="fr">Sur nous</p>
+          <hr>
+          <a lang="en" href="{% url 'viciapp:about' %}#aboutProject">Project</a>
+          <a lang="en" href="{% url 'viciapp:about' %}#aboutTeam">Team</a>
+          <a lang="en" href="{% url 'viciapp:about' %}#aboutContact">Contact Us</a>
+          <a lang="fr" href="{% url 'viciapp:about' %}#aboutProject">Projet</a>
+          <a lang="fr" href="{% url 'viciapp:about' %}#aboutTeam">Team</a>
+          <a lang="fr" href="{% url 'viciapp:about' %}#aboutContact">Contactez Nous</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

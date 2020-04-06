@@ -1,45 +1,14 @@
-{% load static%}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <link rel="stylesheet" href="{% static 'css/file_reader.css' %}">
     <link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
     {{ form.media }}
     <title>Vici | Edit Profile</title>
-
-    <script type="text/javascript">
-      function addOpeningHourCb() {
-        var openingHoursList=document.getElementById('openingHoursList');
-        nbOfChilds=openingHoursList.childElementCount;
-
-        if(nbOfChilds<2) {
-          var listItem=document.createElement('li');
-          listItem.innerHTML=`<div class="inlineInputContainer">
-            <input class="textInput dayInput" type="text" name="dayInput`+(nbOfChilds+1)+`" value="Sa" disabled>
-            <input class="textInput hoursInput" type="text" name="hoursInput`+(nbOfChilds+1)+`" value="">
-          </div>`;
-          openingHoursList.appendChild(listItem);
-        }
-        else {
-          //do this in a more fancy way if more time
-          alert('Take a rest day ;)');
-        }
-      }
-
-      function removeOpeningHourCb() {
-        var openingHoursList=document.getElementById('openingHoursList');
-        nbOfChilds=openingHoursList.childElementCount;
-
-        if(nbOfChilds>=2) {
-          openingHoursList.removeChild(openingHoursList.lastChild);
-        }
-        else {
-          //do this in a more fancy way if more time
-          alert('You need to have an opening indication!');
-        }
-      }
-    </script>
   </head>
   <body>
     <header>
@@ -47,19 +16,17 @@
         <div id="profileIcon">
           <a href="{% url 'viciapp:edit_profile' %}"><img src="{% static 'img/logo_full.png' %}" alt="profile icon"></a>
         </div>
-        <form id="logOutForm" action="{% url 'viciapp:index' %}" method="post">
-          {% csrf_token %}
+        <form id="logOutForm" action="" method="post">
           <input class="logOutButton" type="submit" name="logOut" value="Log Out">
         </form>
       </div>
     </header>
-
     <main>
       <div class="editProfileContainer">
         <div class="formContainer">
           <h2 class="formTitle">Manage Account Data</h2>
           <form class="editData" id="changeAccountData" action="{% url 'viciapp:index' %}" method="post">
-            {% csrf_token %}
+	    {% csrf_token %}
             <label for="changeEmail">Change E-Mail</label>
             <span class="errorMsg" id="emailError">{{errorMsgEmail}}</span>
             <span class="errorMsg" id="emailErrorJS"></span>
@@ -81,9 +48,10 @@
 
         <div class="formContainer">
           <h2 class="formTitle">Manage Profile</h2>
-          <form class="editData" id="changeProfileData" action="{% url 'viciapp:index' %}" method="post">
-            {% csrf_token %}
-            {{ form }}
+          <form class="editData" id="changeProfileData" action="" method="post" enctype="multipart/form-data">
+	    {% csrf_token %}
+	    {{ form }}
+            <input class="submitButton"  id="applyProfileChanges" type="submit" name="changeProfileData" value="Apply Changes">
           </form>
         </div>
       </div>
@@ -99,9 +67,9 @@
         <div class="footerContainer">
           <p>About us</p>
           <hr>
-          <a href="{% url 'viciapp:about' %}#aboutProject">Project</a>
-          <a href="{% url 'viciapp:about' %}#aboutTeam">Team</a>
-          <a href="{% url 'viciapp:about' %}#aboutContact">Contact Us</a>
+          <a href="{% url 'viciapp:about' %}">Project</a>
+          <a href="{% url 'viciapp:about' %}">Team</a>
+          <a href="{% url 'viciapp:about' %}">Contact Us</a>
         </div>
       </div>
     </footer>

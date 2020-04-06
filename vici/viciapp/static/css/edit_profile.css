@@ -10,7 +10,7 @@ body{
 main {
   background-color: var(--bgColor1);
   color: var(--textColor4);
-  padding: 10vh 20vw;
+  padding: 6vh 20vw 10vh 20vw;
   display: grid;
 }
 
@@ -91,7 +91,21 @@ header form {
   height:min-content;
 }
 
+.formContainer h2:first-child {
+  margin-top:4vh;
+}
+
+
+
 /*MANAGE PROFILE FORM*/
+.textInput {
+  margin: 0 0 0.4vh 0;
+}
+
+h3 {
+  border-bottom: 2px solid var(--textColor4);
+  margin: 2vh 0 1vh 0; 
+}
 
 #NAPInput {
   width: 20%;
@@ -101,76 +115,98 @@ header form {
   width: 70%;
 }
 
-/*FILER READER*/
-.file_reader {
-  background: var(--bgColor1);
-  width: 100%
-}
-
-.file_reader>*,.file_reader>*>* {
-  background: var(--bgColor1);
-  font-family: var(--fontParagraph);
-  font-size: 11pt;
-  letter-spacing: normal;
-
-}
-
-.file_select_buttons {
-  height: 2em;
+.selectionContainer {
   display: flex;
+  flex-wrap: wrap;
+  margin: 2vh 0;
 }
 
-.file_select_buttons>* {
-  line-height:2.5em;
-  background: var(--bgColor4);
-  color: var(--textColor4);
-  text-transform: none;
-  width: max-content;
+.radioOrCheckboxContainer {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 25%;
+}
+
+.radioOrCheckbox {
+  display: none;
+}
+
+.icon {
+  display: block;
+  width: 3vh;
+  height: 3vh;
+  background: var(--bgColor2);
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.textLabelRadioOrCheckbox {
+  font-size: 10pt;
+  height: 3vh;
+  line-height: 3vh;
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: "...";
+  text-align: center;
+  width: 100%;
+}
+
+.selectOther .textInput {
+  padding: 0;
+  height: 2vh;
+  line-height: 2vh;
+  margin: 0.5vh auto 0.5vh auto;
+  width: 80%;
+  text-align: center;
+  
+  
+}
+
+.radioOrCheckbox:checked ~ .icon {
+  background: var(--bgColor3);
+}
+
+.radioOrCheckbox:checked ~ .icon:hover {
+  background: var(--bgColorHover3);
+}
+
+.icon:hover {
+  background: var(--bgColorHover4);
+}
+
+.radioOrCheckboxContainer .textInput {
+  font-size: 10pt;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  width: min-content;
   height: 2.5em;
   border: none;
-  margin: 0px 0.5em;
+  background: var(--bgColor4);
+  color: var(--textColor4);
+  margin: 1vh auto 0 auto;
   padding: 0 1em;
-
+  border-radius: 0.2vw;
 }
 
-.file_select_buttons>*:hover {
+button:hover {
   background: var(--bgColorHover4);
   color: var(--textColorHover4);
-
 }
 
-.file_select_buttons>*:active {
-  background: var(--bgColorHover4);
+.dayInput {
+  width: 20%;
 }
 
-.file_select {
+.hoursInput {
+  width: 70%;  
 }
 
-.drop_zone {
-  width: inherit;
-}
-
-.drop_zone p.drop_here {
-  height: 5vw;
-  line-height: 5vw;
-}
-
-.uploaded_item .file_tb_container {
-}
-
-.uploaded_item {
-}
-
-div.uploaded_item:last-of-type {
-}
-
-.uploaded_item img {
-}
-
-.uploaded_item p {
-
-}
-
-.uploaded_item:hover .delet_item {
-
+input[type=file] {
+  margin: 1vh 0;
 }

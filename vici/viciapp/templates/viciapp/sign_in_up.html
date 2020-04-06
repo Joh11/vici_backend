@@ -1,29 +1,42 @@
-{% load static %}
-
+{% load static%}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sign_in_up.css' %}">
-    <script type="text/javascript" src="{% static 'js/signInUpFormCheck.js' %}" charset="utf-8"></script>
+    <link rel="stylesheet" href="{% static 'css/singn_in_up.css' %}">
+    <script type="text/javascript" src="{% static 'js/sign_in_up_form_check.js' %}" charset="utf-8"></script>
 
     <title>Vici | Sign In or Register</title>
   </head>
 
   <body onload="setupFormCheck()">
+    <header>
+      <div class="mainHeader signInUpHeader">
+        <script id="language_script" data-languages="en,fr" data-debug="1" src="{% static 'js/language_selector.js' %}"></script>
+
+        <div class="headerHome">
+          <a href="{% url 'viciapp:index' %}">Home</a>
+        </div>
+
+        <language class="headerLang" id="langSelector" data-type="select">
+        </language>
+      </div>
+    </header>
+
     <main>
-      <div class="fomContainer">
-        <form class="signInUp" action="{% url 'viciapp:login_process' %}" method="post">
-	  {% csrf_token %}
+      <div class="formContainer">
+        <form id="signInUp" action="TODO_HANDLE_LOGIN/SIGNUP" method="post">
+          {% csrf_token %}
           <input id="registerFormCheck" type="checkbox" name="register">
 
           <label for="email">E-Mail</label>
           <span class="errorMsg" id="emailError">{{errorMsgEmail}}</span>
           <span class="errorMsg" id="emailErrorJS"></span>
-          <input class="textInput" type="text" id="email" name="emailLogIn" placeholder="name@example.ch">
+          <input class="textInput" type="text" id="email" name="emailLogIn" placeholder="address@example.ch">
 
-          <label for="companyName" class="registerInput">Your Company</label>
+          <label lang="en" for="companyName" class="registerInput">Your Company</label>
+          <label lang="fr" for="companyName" class="registerInput">Votre entreprise</label>
           <span class="errorMsg registerInput" id="companyNameError">{{errorMsgCompany}}</span>
           <span class="errorMsg registerInput" id="companyNameErrorJS"></span>
           <input class="registerInput textInput" type="text" id="companyName" name="companyName" placeholder="My Company">
@@ -33,27 +46,60 @@
           <span class="errorMsg" id="pwErrorJS"></span>
           <input class="textInput" type="password" id="pw" name="pwLogIn">
 
-          <label for="pwConfirm" class="registerInput">Confirm Password</label>
+          <label lang="en" for="pwConfirm" class="registerInput">Confirm Password</label>
+          <label lang="fr" for="pwConfirm" class="registerInput">Confirmer Password</label>
           <span class="errorMsg registerInput" id="pwConfirmError">{{errorMsgPwConfirm}}</span>
           <span class="errorMsg registerInput" id="pwConfirmErrorJS"></span>
           <input class="registerInput textInput" type="password" id="pwConfirm" name="pwConfirm">
 
+          <div class="formDescription registerInput">
+            <p lang="en">I have read and accept the <a href="{% url 'viciapp:terms_and_conditions' %}" target="_blank">terms and conditions...</a></p>
+            <p lang="fr">J'ai lu et j'accepte les <a href="{% url 'viciapp:terms_and_conditions' %}" target="_blank">conditions génerales d'utilisation...</a></p>
+          </div>
+          <label class="registerInput" id="termsAndConditionsLabel" for="termsAndConditionsCheck"></label>
+          <input class="registerInput" id="termsAndConditionsCheck" type="checkbox" name="" value="">
+
           <div class="formDescription">
-            <p class="logInInput">New to this site and you don't have an account?</p>
-            <p class="registerInput textInput">You already have an account?</p>
+            <p lang="en" class="logInInput">New to this site and you don't have an account?</p>
+            <p lang="fr" class="logInInput">Nouveau sur ce site et vous n'avez pas encore d'account?</p>
+            <p lang="en" class="registerInput">You already have an account?</p>
+            <p lang="fr" class="registerInput">Vous avez déjà un account?</p>
           </div>
 
           <label class="changeForm" for="registerFormCheck">
-            <p class="registerInput">Log In instead...<p>
-            <p class="logInInput">Register here...</p>
+            <p lang="en" class="registerInput">Log In instead...</p>
+            <p lang="fr" class="registerInput">Connectez-vous ici...</p>
+            <p lang="en" class="logInInput">Register here...</p>
+            <p lang="fr" class="logInInput">Enregistrez-vous ici...</p>
           </label>
 
-          <input class="logInInput submitButton" type="submit" name="submit" value="Sign In">
-          <input class="registerInput submitButton" type="submit" name="submit" value="Sign Up">
+          <span class="errorMsg" id="submitErrorJS"></span>
+          <input class="logInInput submitButton" id="signInButton" type="submit" name="submit" value="Sign In">
+          <input class="registerInput submitButton" id="signUpButton" type="submit" name="submit" value="Sign Up">
         </form>
-
-
       </div>
     </main>
+
+    <footer>
+      <div class="mainFooter landingFooter">
+        <div class="footerContainer">
+          <p lang="en">Help</p>
+          <p lang="fr">Aide</p>
+          <hr>
+          <a href="{% url 'viciapp:about' %}#aboutFaq">FAQ</a>
+        </div>
+        <div class="footerContainer">
+          <p lang="en">About us</p>
+          <p lang="fr">Sur nous</p>
+          <hr>
+          <a lang="en" href="{% url 'viciapp:about' %}#aboutProject">Project</a>
+          <a lang="en" href="{% url 'viciapp:about' %}#aboutTeam">Team</a>
+          <a lang="en" href="{% url 'viciapp:about' %}#aboutContact">Contact Us</a>
+          <a lang="fr" href="{% url 'viciapp:about' %}#aboutProject">Projet</a>
+          <a lang="fr" href="{% url 'viciapp:about' %}#aboutTeam">Team</a>
+          <a lang="fr" href="{% url 'viciapp:about' %}#aboutContact">Contactez Nous</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sign_in_up.css' %}">
+    <script type="text/javascript" src="{% static 'js/signInUpFormCheck.js' %}" charset="utf-8"></script>
+
+    <title>Vici | Sign In or Register</title>
+  </head>
+
+  <body onload="setupFormCheck()">
+    <main>
+      <div class="fomContainer">
+        <form class="signInUp" action="{% url 'viciapp:login_process' %}" method="post">
+	  {% csrf_token %}
+          <input id="registerFormCheck" type="checkbox" name="register">
+
+          <label for="email">E-Mail</label>
+          <span class="errorMsg" id="emailError">{{errorMsgEmail}}</span>
+          <span class="errorMsg" id="emailErrorJS"></span>
+          <input class="textInput" type="text" id="email" name="emailLogIn" placeholder="name@example.ch">
+
+          <label for="companyName" class="registerInput">Your Company</label>
+          <span class="errorMsg registerInput" id="companyNameError">{{errorMsgCompany}}</span>
+          <span class="errorMsg registerInput" id="companyNameErrorJS"></span>
+          <input class="registerInput textInput" type="text" id="companyName" name="companyName" placeholder="My Company">
+
+          <label for="pw">Password</label>
+          <span class="errorMsg" id="pwError">{{errorMsgPw}}</span>
+          <span class="errorMsg" id="pwErrorJS"></span>
+          <input class="textInput" type="password" id="pw" name="pwLogIn">
+
+          <label for="pwConfirm" class="registerInput">Confirm Password</label>
+          <span class="errorMsg registerInput" id="pwConfirmError">{{errorMsgPwConfirm}}</span>
+          <span class="errorMsg registerInput" id="pwConfirmErrorJS"></span>
+          <input class="registerInput textInput" type="password" id="pwConfirm" name="pwConfirm">
+
+          <div class="formDescription">
+            <p class="logInInput">New to this site and you don't have an account?</p>
+            <p class="registerInput textInput">You already have an account?</p>
+          </div>
+
+          <label class="changeForm" for="registerFormCheck">
+            <p class="registerInput">Log In instead...<p>
+            <p class="logInInput">Register here...</p>
+          </label>
+
+          <input class="logInInput submitButton" type="submit" name="submit" value="Sign In">
+          <input class="registerInput submitButton" type="submit" name="submit" value="Sign Up">
+        </form>
+
+
+      </div>
+    </main>
+  </body>
+</html>
