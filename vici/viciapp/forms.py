@@ -10,12 +10,16 @@ service_categories = list(enumerate(service_categories))
 
 class CompanyForm(forms.Form):
     name = forms.CharField(max_length=200, label='Company name')
+    logo = forms.ImageField(label='Logo')
     description = forms.CharField(widget=forms.Textarea)
     location = forms.PointField(widget=forms.OSMWidget(attrs={'map_width': 700, 'map_height': 500}))
     category = forms.ChoiceField(choices=categories) # TODO put list
     help_message = forms.CharField(widget=forms.Textarea, label='How can I get help') # blank=True
     opening_hours = forms.CharField() # max_length=400, blank=True
 
+    cover = forms.ImageField(label='Cover picture')
+
+    
     # services
     service1_cat = forms.ChoiceField(choices=service_categories, label='Service # 1 category')
     service1_desc = forms.CharField(widget=forms.Textarea, label='Service # 1 description', required=False)

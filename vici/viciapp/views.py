@@ -55,7 +55,7 @@ def edit_profile(request):
         return redirect('viciapp:login')
     
     if request.method == 'POST':
-        form = CompanyForm(request.POST)
+        form = CompanyForm(request.POST, request.FILES)
 
         if form.is_valid():
             # Add the company
@@ -72,51 +72,33 @@ def edit_profile(request):
             # remove previous company and services
             Service.objects.filter(company__user=request.user).delete()
             Company.objects.filter(user=request.user).delete()
-            
+
+            # remove previous logo and cover pictures
+            Image.objects.filter(company__user=request.user, legend='logo').delete()
+            Image.objects.filter(company__user=request.user, legend='cover').delete()
+
+            logo = Image(company=company, legend='logo', image=c['logo'])
+            cover = Image(company=company, legend='cover', image=c['cover'])
+
             company.save()
+            logo.save()
+            cover.save()
             if c['service1_desc']:
                 service1.save()
             if c['service2_desc']:
                 service2.save()
             if c['service3_desc']:                
                 service3.save()
-            return redirect('index')
+            return redirect('viciapp:index')
     else:
         form = CompanyForm()
 
     return render(request, 'viciapp/edit_profile.html', {'form': form})
 
-# def edit_profile_process(request):
-#     print('All possible POST: {} ...'.format(len(request.POST)))
-#     for post_key in request.POST:
-#         x = match_file(post_key)
-#         if x is not None: # It is a file
-#             file_input, filename = x
-#             # For now put file_input as legend
-#             image = Image(company=Company.objects.all()[0], legend=file_input, image=get_file_from_data(request.POST[post_key]))
-#             image.save()
-#             print('saved {} {}'.format(file_input, filename))
-
-#     return HttpResponse('test')
-
 def logout(request): # LOGOUT TODO
     if request.user.is_authenticated:
         logout(request.user)
     return redirect(index)
-
-def file_upload(request):
-    return render(request, 'viciapp/file_upload.html')
-
-def file_upload_process(request):
-    for x in request.FILES:
-        print(type(x))
-        print(x)
-        f = request.FILES[x]
-        print(type(f))
-        with open(x, 'wb+') as dest:
-            for chunk in f.chunks():
-                dest.write(chunk)
-    return HttpResponse("request.FILES = {}".format(dict(request.FILES)))
 
 # Tweak to make the api key retrievable from the app
 @csrf_exempt # TODO REMOVE LATER

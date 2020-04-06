@@ -27,10 +27,6 @@ urlpatterns = [
     path('login_process/', views.login_process, name='login_process'),
     # path('edit_profile_process/', views.edit_profile_process, name='edit_profile_process'),
 
-    # Tweak to remove later
-    path('file_upload/', views.file_upload, name='file_upload'),
-    path('file_upload_process/', views.file_upload_process, name='file_upload_process'),
-
     # Api
     path('login_app/', views.login_app, name='login_app'),
     path('sign_up_app/', views.sign_up_app, name='sign_up_app'),

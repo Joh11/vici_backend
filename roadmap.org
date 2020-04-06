@@ -1,7 +1,7 @@
 * Active tasks : 
-** TODO clone repo and move css and js
-** TODO check if drag and drop works
-** TODO Integrate frontend
+** TODO Add file upload
+** TODO Solve image legend issue
+** TODO add error messages
 
 * TODO API and iOS communication
 ** Put permissions everywhere using API key
