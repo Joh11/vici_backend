@@ -18,3 +18,6 @@ For pages (html)
 index.html -----> {% url 'viciapp:index' %}
 See the file vici/viciapp/urls.py for a list of possible choices. 
 It corresponds to the name='__' words
+
+Special rule for forms:
+inside the <form></form> tag, add {% csrf_token %} about everything else
