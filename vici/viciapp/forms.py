@@ -19,6 +19,9 @@ class CompanyForm(forms.Form):
 
     cover = forms.ImageField(label='Cover picture')
 
+    other_image1 = forms.ImageField(label='Other image # 1', required=False)
+    other_image2 = forms.ImageField(label='Other image # 2', required=False)
+    other_image3 = forms.ImageField(label='Other image # 3', required=False)
     
     # services
     service1_cat = forms.ChoiceField(choices=service_categories, label='Service # 1 category')

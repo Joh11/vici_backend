@@ -73,16 +73,22 @@ def edit_profile(request):
             Service.objects.filter(company__user=request.user).delete()
             Company.objects.filter(user=request.user).delete()
 
-            # remove previous logo and cover pictures
-            Image.objects.filter(company__user=request.user, legend='logo').delete()
-            Image.objects.filter(company__user=request.user, legend='cover').delete()
+            # remove all previous images
+            Image.objects.filter(company__user=request.user).delete()
 
             logo = Image(company=company, legend='logo', image=c['logo'])
             cover = Image(company=company, legend='cover', image=c['cover'])
-
+            
             company.save()
             logo.save()
             cover.save()
+
+            for i in [1, 2, 3]:
+                key = 'other_image{}'.format(i)
+                if c[key]:
+                    image = Image(company=company, legend='other_images', image=c[key])
+                    image.save()
+            
             if c['service1_desc']:
                 service1.save()
             if c['service2_desc']:

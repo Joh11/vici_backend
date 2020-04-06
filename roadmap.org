@@ -2,6 +2,7 @@
 ** TODO Add file upload
 ** TODO Solve image legend issue
 ** TODO add error messages
+** TODO solve slowness of compression
 
 * TODO API and iOS communication
 ** Put permissions everywhere using API key
