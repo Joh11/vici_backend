@@ -34,3 +34,4 @@ class CompanyForm(forms.Form):
     service3_desc = forms.CharField(widget=forms.Textarea, label='Service # 3 description', required=False)
 
     
+name

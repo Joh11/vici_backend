@@ -45,7 +45,7 @@ def login_process(request):
         pass # TODO error page ?
     
     print(request.POST['submit'])
-    return redirect('viciapp:index')
+    return redirect('viciapp:edit_profile')
 
 # def edit_profile(request):
 #     return render(request, 'viciapp/edit_profile.html')
@@ -100,7 +100,17 @@ def edit_profile(request):
                 service3.save()
             return redirect('viciapp:index')
     else:
-        form = CompanyForm()
+        initial = {}
+        if hasattr(request.user, 'company'):
+            c = request.user.company
+            initial['name'] = c.name
+            initial['description'] = c.description
+            initial['location'] = c.location
+            initial['category'] = c.category
+            initial['help_message'] = c.help_message
+            initial['opening_hours'] = c.opening_hours
+            
+        form = CompanyForm(initial=initial)
 
     return render(request, 'viciapp/edit_profile.html', {'form': form})
 
