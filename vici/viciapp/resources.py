@@ -28,7 +28,6 @@ class CompanyResource(NamespacedModelResource):
     class Meta:
         queryset = Company.objects.all() # TODO for now send all companies
         serializer = CamelCaseJSONSerializer()
-        excludes = ['id']
         filtering = {'category': ALL,}
         ordering = {'location'}
 
