@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/landing_page.css' %} ">
+
+
+    <title>Vici | Home</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="mainHeader landingHeader">
+	<script id="language_script" data-languages="en,fr" data-debug="1" src="{% static 'js/language_selector.js' %}"></script>
+
+	<language class="langCheckbox" id="langSelector" data-type="select">
+	</language>
+      </div>
+    </header>
+
+    <main>
+      <div lang="en" class="container">
+	<img src="{% static 'img/viciLogo.jpg' %}" id="viciLogo" alt="logo">
+	<h1 class="mainTitle" id="mainTitleLanding">Welcome to VICI</h1>
+	<h2>EN Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
+
+	<div class="landingPageNav">
+          <div class="buttonPanel">
+            <div class="buttonDescription">
+              <p>Description. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+            <div class="linkButton">
+              <a href="{% url 'viciapp:login' %}">Sign In/Up</a>
+            </div>
+          </div>
+
+          <div class="buttonPanel">
+            <div class="buttonDescription">
+              <p>Description. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+            <div class="linkButton">
+              <a href="{% url 'viciapp:about' %}">About Vici</a>
+            </div>
+          </div>
+	</div>
+      </div>
+
+      <div lang="fr" class="container">
+	<img src="{% static 'img/viciLogo.jpg'%}" id="viciLogo" alt="logo">
+	<h1 class="mainTitle" id="mainTitleLanding">Welcome to VICI</h1>
+	<h2>FR Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
+
+	<div class="landingPageNav">
+          <div class="buttonPanel">
+            <div class="buttonDescription">
+              <p>Description. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+            <div class="linkButton">
+              <a href="{% url 'viciapp:login' %}">Sign In/Up</a>
+            </div>
+          </div>
+
+          <div class="buttonPanel">
+            <div class="buttonDescription">
+              <p>Description. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+            <div class="linkButton">
+              <a href="{% url 'viciapp:about' %}">About Vici</a>
+            </div>
+          </div>
+	</div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="mainFooter landingFooter">
+	<div class="footerContainer">
+          <p>Help</p>
+          <hr>
+          <a href="about.html">FAQ</a>
+	</div>
+	<div class="footerContainer">
+          <p>About us</p>
+          <hr>
+          <a href="about.html">Project</a>
+          <a href="about.html">Team</a>
+          <a href="about.html">Contact Us</a>
+	</div>
+      </div>
+    </footer>
+  </body>

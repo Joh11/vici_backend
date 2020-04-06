@@ -1,5 +1,3 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,28 +12,107 @@
       <div class="mainHeader aboutHeader">
         <script id="language_script" data-languages="en,fr" data-debug="1" src="js/language_selector.js"></script>
 
-        <language class="langCheckbox" id="langSelector" data-type="select">
+        <div class="headerHome">
+          <a href="index.html">Home</a>
+        </div>
+
+        <language class="headerLang" id="langSelector" data-type="select">
         </language>
+
+        <div class="headerSignIn">
+          <a lang="en" href="sign_in_up.html">Sign In</a>
+          <a lang="fr" href="sign_in_up.html">Se connecter</a>
+        </div>
       </div>
     </header>
 
     <main>
-      
+      <div class="aboutContainer">
+        <div id="aboutProject" class="aboutContainer">
+          <h1 lang="en">About the Project</h1>
+          <h1 lang="fr">Le Projet</h1>
+          <hr>
+          <p lang="en">Staying at home is currently the best strategy to slow down the Covid-19 pandemic. But what about those for which the income relies on direct contact with customers? The city fell into silence as the thousand faces making it alive dropped the curtain. But the small producers, shopkeepers and entrepreneurs didn’t vanish, they’re still active behind the doorway in order to cope with the current situation, financially speaking. They’re adapting and we should be by their sides. On the Vici platform, you’ll discover the services and alternatives they’ve putten in place. Meet those who are actively shaping more resilient cities.</p>
+          <p lang="fr">En ces temps où le meilleur comportement à adapter pour endiguer l’épidémie est de rester loin les uns des autres, quid de tous ceux dont l’activité repose sur le contact direct avec le client? La ville s’est tue lorsque les milles visages qui la composaient : petits producteurs, commerçants, entrepreneurs ont du baisser le rideau. Mais ce n’est qu’une façade: les petits gens n’ont pas disparu et s’activent pour maintenir des pans de leur activité. Ils s’adaptent et vous avec eux. Découvrez ici les services ou alternatives qu’ils vous proposent, rencontrez ceux qui font la ville, pour une ville de la proximité, soudée et résiliente. </p>
+        </div>
+        <div id="aboutTeam" class="aboutContainer">
+          <h1 lang="en">Team</h1>
+          <h1 lang="fr">Team</h1>
+          <hr>
+          <p lang="en">We’re a team of 8 friends and EPFL Master’s students. The project Vici arose during the “LauzHack against Covid-19” creativity marathon organized by a student association of EPFL. By the end of this 72 hours creativity marathon, the students should have developed their project idea and prove its viability. We took advantage of this occasion to mobilise our brains on a project we had at heart: add importance to social cohesion, allow consumers and local producers to find each other in order for everyone to realize that all that we need isn’t very far away.</p>
+          <p lang="fr">Nous sommes une équipe de huit amis et étudiants en Master à l’EPFL. Le projet Vici est né lors du Hackathon “LauzHack against Covid-19” organisé par un comité de l’EPFL. Lors de cet évènement les étudiants ont 72 heures (et chaque heure compte) pour développer un projet et prouver sa viabilité. Nous avons vu là l’occasion parfaite de développer un projet qui nous tenait à coeur, à savoir créer du lien social dans la ville, faire se rencontrer consommateurs et producteurs locaux afin que chacun se rende compte que tout ce dont on a besoin est déjà sous nos yeux, en toute vicinité.</p>
+          <div class="aboutFaces">
+            <img src="img/faces/abricq.png" alt="profile">
+            <img src="img/faces/mbricq.png" alt="profile">
+            <img src="img/faces/abernard.png" alt="profile">
+            <img src="img/faces/jfelisaz.png" alt="profile">
+            <img src="img/faces/ljacqueroud.png" alt="profile">
+            <img src="img/faces/smichel.png" alt="profile">
+            <img src="img/faces/lmussa.png" alt="profile">
+            <img src="img/faces/julbrich.png" alt="profile">
+          </div>
+        </div>
+        <div id="aboutContact" class="aboutContainer">
+          <h1 lang="en">Contact Us</h1>
+          <h1 lang="fr">Contactez nous</h1>
+          <hr>
+          <p lang="en">TODO</p>
+          <p lang="fr">TODO</p>
+        </div>
+        <div id="aboutFaq" class="aboutContainer">
+          <h1 lang="en">FAQ</h1>
+          <h1 lang="fr">FAQ</h1>
+          <hr>
+          <div lang="en" class="aboutFaqQuestions">
+            <h2>Do the collaborators have to pay for the services provide?</h2>
+            <p>No, the registration on the platform and use of the application are entirely free.</p>
+            <h2>Do the users have to pay for the services provided?</h2>
+            <p>No, the registration on the platform and use of the application are entirely free.</p>
+            <h2>Can anyone apply as a collaborator?</h2>
+            <p>We insist on the fact that we want to place local retailers, small businesses and entrepreneurs in the spotlight. Through those collaborations, we really want to promote sustainable development, well-being and inclusive growth.</p>
+            <h2>What will Vici’s next move be?</h2>
+            <p>Currently, the platform is still a prototype. We will keep improving the website to offer more functionalities and a better user interface. At the moment the application is only available for iOs and we shortly plan to set up the Android version. Don’t hesitate to contact us and share your advices and recommendations!</p>
+            <h2>What will the platform look like once the covid-19 pandemic is behind us?</h2>
+            <p>Hard to tell at the moment. Part of the team is motivated to keep Vici going on the long term. We will make our best not to let down those who trusted us from the start.
+            However, we’re sure this crisis won’t be the last one we’ll have to face. Climate change is still real and heat waves and flooding will hit us… though we won’t be the ones suffering the most from it. But we’re not about to give up and as long as the Vici platform is out there we hope it will make people realise the efforts and work that lies in every consumer good, not forgetting those who carried out the work. We need to bear in mind that resources are finite and consume in full knowledge of this fact.</p>
+          </div>
+          <div lang="fr" class="aboutFaqQuestions">
+            <h2>Le service est-il payant pour les partenaires?</h2>
+            <p>Non, l’inscription et l’utilisation de la plateforme sont gratuites.</p>
+            <h2>Le service est-il payant pour les utilisateurs?</h2>
+            <p>Non, l’inscription et l’utilisation de la plateforme sont gratuites.</p>
+            <h2>Acceptez-vous tout type de partenaires?</h2>
+            <p>Nous insistons sur le fait que la plateforme Vici s'adresse uniquement aux petits commerçants, producteurs et entrepreneurs mettant l’aspect local, le lien social et le respect de l'environnement au coeur de leurs activités.</p>
+            <h2>A quoi ressemblera le service une fois que la pandémie de Covid-19 sera derrière nous?</h2>
+            <p>Difficile de prévoir à l’heure du jour. Une partie de l’équipe est déjà néanmoins motivée à continuer d’entretenir la plateforme sur le long terme. Nous ferons tout pour ne pas laisser tomber ceux qui nous ont accordé leur confiance jusque là.
+            Nous sommes en revanche convaincue que cette crise ne sera pas la dernière. Au rythme actuel des émissions de carbone le réchauffement climatique va s’accélérer, les grandes canicules l’accompagneront. Nous ne serons pas les plus touchés sous nos lattitudes, mais nous seront touchés quand même. Nous ne baisserons pas les bras devant ce qui se présage comme une fatalité et esperons que cette plateforme, aussi longtemps qu’elle sera en place, permettra à chacun de voir de ses yeux le travail nécessaire et l’humain qui se cache derrière tout bien de consommation. Ceci afin de prendre conscience de la nécessité d’économiser les ressources et de placer une réflexion dans chaque achat.</p>
+            <h2>C'est quoi les plans futurs pour ce projet?</h2>
+            <p>À l'état actuel, le service est encore en phase de prototype. Le site web va constamment être amélioré pour donner plus de fonctionnalité et une meilleure interface utilisateur. L'application existe seulement pour les système iOS, mais la version Android va arriver prochainement, une fois que tout sera plus stable. N'hésitez pas à nous contacter et donner vos avis et recommandations!</p>
+            <h2>Comment ce fait-il que vous soyez tous aussi beaux?</h2>
+            <p>C’est le résultat d’une alimentation variée et de qualité !</p>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer>
       <div class="mainFooter landingFooter">
         <div class="footerContainer">
-          <p>Help</p>
+          <p lang="en">Help</p>
+          <p lang="fr">Aide</p>
           <hr>
-          <a href="about.html">FAQ</a>
+          <a href="about.html#aboutFaq">FAQ</a>
         </div>
         <div class="footerContainer">
-          <p>About us</p>
+          <p lang="en">About us</p>
+          <p lang="fr">Sur nous</p>
           <hr>
-          <a href="about.html">Project</a>
-          <a href="about.html">Team</a>
-          <a href="about.html">Contact Us</a>
+          <a lang="en" href="about.html#aboutProject">Project</a>
+          <a lang="en" href="about.html#aboutTeam">Team</a>
+          <a lang="en" href="about.html#aboutContact">Contact Us</a>
+          <a lang="fr" href="about.html#aboutProject">Projet</a>
+          <a lang="fr" href="about.html#aboutTeam">Team</a>
+          <a lang="fr" href="about.html#aboutContact">Contactez Nous</a>
         </div>
       </div>
     </footer>

@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <link rel="stylesheet" href="{% static 'css/file_reader.css' %}">
+    <link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
+    {{ form.media }}
+    <title>Vici | Edit Profile</title>
+  </head>
+  <body>
+    <header>
+      <div class="fullNav">
+        <div id="profileIcon">
+          <a href="{% url 'viciapp:edit_profile' %}"><img src="{% static 'img/logo_full.png' %}" alt="profile icon"></a>
+        </div>
+        <form id="logOutForm" action="" method="post">
+          <input class="logOutButton" type="submit" name="logOut" value="Log Out">
+        </form>
+      </div>
+    </header>
+    <main>
+      <div class="editProfileContainer">
+        <div class="formContainer">
+          <h2 class="formTitle">Manage Account Data</h2>
+          <form class="editData" id="changeAccountData" action="{% url 'viciapp:index' %}" method="post">
+	    {% csrf_token %}
+            <label for="changeEmail">Change E-Mail</label>
+            <span class="errorMsg" id="emailError">{{errorMsgEmail}}</span>
+            <span class="errorMsg" id="emailErrorJS"></span>
+            <input class="textInput" type="text" name="email" placeholder="address@example.ch">
+
+            <label for="pw">Password</label>
+            <span class="errorMsg" id="pwError">{{errorMsgPw}}</span>
+            <span class="errorMsg" id="pwErrorJS"></span>
+            <input class="textInput" type="password" id="pw" name="pwLogIn">
+
+            <label for="pwConfirm">Confirm Password</label>
+            <span class="errorMsg" id="pwConfirmError">{{errorMsgPwConfirm}}</span>
+            <span class="errorMsg" id="pwConfirmErrorJS"></span>
+            <input class="textInput" type="password" id="pwConfirm" name="pwConfirm">
+
+            <input class="submitButton" type="submit" name="changeAccountData" value="Apply Changes">
+          </form>
+        </div>
+
+        <div class="formContainer">
+          <h2 class="formTitle">Manage Profile</h2>
+          <form class="editData" id="changeProfileData" action="" method="post" enctype="multipart/form-data">
+	    {% csrf_token %}
+	    {{ form }}
+            <input class="submitButton"  id="applyProfileChanges" type="submit" name="changeProfileData" value="Apply Changes">
+          </form>
+        </div>
+      </div>
+
+    </main>
+    <footer>
+      <div class="mainFooter landingFooter">
+        <div class="footerContainer">
+          <p>Help</p>
+          <hr>
+          <a href="{% url 'viciapp:about' %}">FAQ</a>
+        </div>
+        <div class="footerContainer">
+          <p>About us</p>
+          <hr>
+          <a href="{% url 'viciapp:about' %}">Project</a>
+          <a href="{% url 'viciapp:about' %}">Team</a>
+          <a href="{% url 'viciapp:about' %}">Contact Us</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
