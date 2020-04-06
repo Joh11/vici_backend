@@ -12,6 +12,7 @@ from tastypie.constants import ALL, ALL_WITH_RELATIONS
 from tastypie.http import HttpForbidden, HttpUnauthorized
 from tastypie.models import ApiKey
 from tastypie.authentication import BasicAuthentication
+from tastypie.authorization import Authorization
 
 
 from .serializer import CamelCaseJSONSerializer
@@ -103,6 +104,7 @@ class CommentResource(NamespacedModelResource):
         excludes = ['id']
         queryset = Comment.objects.all()
         serializer = CamelCaseJSONSerializer()
+        authorization = Authorization() # TODO CHANGE LATER
 
 class ApiKeyResource(NamespacedModelResource):
     """A resource to return the API key to the mobile app from username
